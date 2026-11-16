@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=2871e988-9f92-4504-939c-834f8f4a8867
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Get a quote — Meltpoint Studio</title>
+<meta name="description" content="Pick your website, add extras, and get an instant quote from Meltpoint Studio.">
+<meta name="theme-color" content="#0b0606">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0606;--in1:#0e0808;--bone:#f4eee8;--mute:#a49aa8;--line:rgba(243,241,255,.12);--g1:#ffb27a;--g2:#ff3d3d;--g3:#b3123a}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--ink);color:var(--bone);font:15px/1.45 "Inter Tight",system-ui,sans-serif;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+body::before{content:"";position:fixed;inset:-20% -20% auto;height:60vh;background:radial-gradient(closest-side,color-mix(in srgb,var(--g2) 22%,transparent),transparent);opacity:.55;pointer-events:none;z-index:0}
+header{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:12px;padding:14px 18px calc(14px);padding-top:max(14px,env(safe-area-inset-top));background:var(--ink);border-bottom:1px solid var(--line)}
+.av{width:40px;height:40px;border-radius:50%;background:var(--in1);display:grid;place-items:center;border:1px solid var(--line);flex:none}
+.av svg{width:24px;height:24px}
+header b{font:800 16px/1.1 Syne,sans-serif;letter-spacing:.01em;display:block}
+header small{color:var(--mute);font-size:12.5px;display:flex;align-items:center;gap:6px}
+header small i{width:7px;height:7px;border-radius:50%;background:#3ddc84;display:inline-block}
+header a{margin-left:auto;color:var(--mute);font-size:13px;text-decoration:none;border:1px solid var(--line);padding:7px 12px;border-radius:99px}
+header a:hover{color:var(--bone)}
+main{position:relative;z-index:1;flex:1;width:100%;max-width:620px;margin:0 auto;padding:18px 14px 40px;display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:8px;align-items:flex-end;animation:in .35s ease both}
+.row.me{justify-content:flex-end}
+.row .av{width:28px;height:28px}.row .av svg{width:16px;height:16px}
+.row.me .av{display:none}
+.row .sp{width:28px;flex:none}
+.bub{max-width:82%;padding:10px 14px;border-radius:18px 18px 18px 6px;background:var(--in1);border:1px solid var(--line)}
+.me .bub{border-radius:18px 18px 6px 18px;background:linear-gradient(135deg,var(--g2),var(--g3));border:0;color:#fff}
+.bub strong{font-weight:600}
+.dots{display:inline-flex;gap:4px;padding:4px 2px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--mute);animation:bl 1s infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes bl{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ui{margin-left:36px;animation:in .35s ease both}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+@media (max-width:520px){.cards{grid-template-columns:1fr 1fr}.card{padding:11px}.card span{font-size:12px}.ui{margin-left:0}}
+.card{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:14px;background:var(--in1);border:1px solid var(--line);transition:border-color .2s,transform .2s}
+.card:hover,.card:focus-visible{border-color:color-mix(in srgb,var(--g2) 70%,transparent);transform:translateY(-2px)}
+.card .ic{font-size:18px;line-height:1;color:var(--g1)}
+.card b{font-weight:600;font-size:14.5px}
+.card span{color:var(--mute);font-size:12.5px;line-height:1.35}
+.card em{font-style:normal;font-weight:600;font-size:13px;margin-top:auto;padding-top:4px;color:var(--g1)}
+.card .tag{align-self:flex-start;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:99px;background:color-mix(in srgb,var(--g2) 22%,transparent);color:var(--bone)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.b{all:unset;cursor:pointer;padding:10px 16px;border-radius:99px;border:1px solid var(--line);background:var(--in1);font-weight:500;font-size:14px;transition:border-color .2s,background .2s;text-align:center}
+.b:hover,.b:focus-visible{border-color:var(--g2)}
+.b.pri{background:linear-gradient(135deg,var(--g2),var(--g3));border-color:transparent;color:#fff}
+.b[aria-pressed=true]{border-color:var(--g2);background:color-mix(in srgb,var(--g2) 18%,var(--in1))}
+.b small{color:var(--mute);margin-left:6px;font-weight:400}
+.b[aria-pressed=true] small{color:var(--bone)}
+.done .card,.done .b{pointer-events:none;opacity:.45}
+.done .sel{opacity:1;border-color:var(--g2)}
+.q{background:var(--in1);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.q .top{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.q .top b{font:800 15px Syne,sans-serif}
+.q .top span{color:var(--mute);font-size:12px}
+.q ul{list-style:none;padding:6px 16px}
+.q li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.q li:last-child{border:0}
+.q li span{color:var(--mute);font-size:12.5px;display:block}
+.q .tot{display:flex;justify-content:space-between;align-items:baseline;padding:14px 16px;background:color-mix(in srgb,var(--g2) 10%,transparent);border-top:1px solid var(--line)}
+.q .tot b{font:800 22px Syne,sans-serif}
+.q .meta{padding:12px 16px;color:var(--mute);font-size:13px;display:grid;gap:4px}
+.q .meta b{color:var(--bone);font-weight:600}
+.acts{display:grid;gap:8px;margin-top:10px}
+.acts .b{padding:12px 16px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--bone);color:var(--ink);padding:10px 16px;border-radius:99px;font-weight:600;font-size:13.5px;opacity:0;transition:.3s;z-index:9;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="av" aria-hidden="true"><svg viewBox="0 0 64 64"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb27a"/><stop offset=".5" stop-color="#ff3d3d"/><stop offset="1" stop-color="#b3123a"/></linearGradient></defs><path d="M32 6C32 6 13 29 13 41a19 19 0 0 0 38 0C51 29 32 6 32 6z" fill="url(#lg)"/><circle cx="32" cy="42" r="6" fill="#0b0606"/></svg></div>
+  <div><b>Meltpoint Studio</b><small><i></i>Quote assistant · instant</small></div>
+  <a href="./">Website</a>
+</header>
+<main id="chat" aria-live="polite"></main>
+<div class="toast" id="toast"></div>
+<script>
+(()=>{
+const TYPES=[
+    {id:'landing',ic:'▭',name:'Landing Page',desc:'One high-impact page for a product, event or campaign.',price:900},
+    {id:'portfolio',ic:'◐',name:'Portfolio',desc:'A personal site that shows your work and gets you hired.',price:1200},
+    {id:'animated',ic:'≋',name:'Animated Website',desc:'Scroll stories, reveals and motion on every section.',price:1400,badge:'Popular'},
+    {id:'business',ic:'▦',name:'Business Website',desc:'Up to 5 pages for your brand, studio, shop or service.',price:1800},
+    {id:'3d',ic:'◆',name:'3D Website',desc:'A real-time 3D object or scene at the heart of your site.',price:3500,badge:'Signature'},
+    {id:'launch',ic:'⏳',name:'Product Launch Page',desc:'Build hype for your new product — launch countdown and email signup.',price:550},
+    {id:'event',ic:'✦',name:'Event / Wedding Site',desc:'Date, schedule, venue, photos and an RSVP form.',price:650},
+    {id:'restaurant',ic:'☕',name:'Restaurant / Café',desc:'Menu, photos, opening hours, map and reservations link.',price:1100},
+    {id:'shop',ic:'🛍',name:'Online Store',desc:'Small shop — up to 20 products with secure checkout.',price:2200},
+  ];
+const ADDS=[
+    {id:'page',name:'Extra page',desc:'Each additional page',price:150},
+    {id:'hero3d',name:'3D hero object',desc:'Add a 3D centerpiece to any site',price:700,not:'3d'},
+    {id:'sound',name:'Sound design',desc:'Interactive web audio',price:150},
+    {id:'copy',name:'Copywriting',desc:'All headlines & text written for you',price:250},
+    {id:'video',name:'Launch promo video',desc:'Short video for social media',price:250},
+    {id:'domain',name:'Domain setup',desc:'Connect yourname.com with SSL',price:50},
+    {id:'care',name:'1 month of updates',desc:'Changes & support after launch',price:120},
+  ];
+const LOGO=document.querySelector('header .av').innerHTML;
+const chat=document.getElementById('chat');
+const usd=n=>'$'+Math.round(n).toLocaleString('en-US');
+const fast=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const wait=ms=>new Promise(r=>setTimeout(r,fast?0:ms));
+const el=(h)=>{const d=document.createElement('div');d.innerHTML=h.trim();return d.firstElementChild;};
+const down=()=>requestAnimationFrame(()=>window.scrollTo({top:document.body.scrollHeight,behavior:fast?'auto':'smooth'}));
+let st={type:null,adds:new Set()};
+
+async function bot(html,delay=650){
+  const r=el(`<div class="row"><div class="av">${LOGO}</div><div class="bub"><span class="dots"><i></i><i></i><i></i></span></div></div>`);
+  chat.append(r);down();await wait(delay);
+  r.querySelector('.bub').innerHTML=html;down();
+}
+function me(t){chat.append(el(`<div class="row me"><div class="bub"></div></div>`));chat.lastElementChild.querySelector('.bub').textContent=t;down();}
+function ui(node,top){const w=el('<div class="ui"></div>');w.append(node);chat.append(w);if(top){const p=w.previousElementSibling;requestAnimationFrame(()=>window.scrollTo({top:Math.max(0,(p||w).getBoundingClientRect().top+scrollY-80),behavior:fast?'auto':'smooth'}));}else down();return w;}
+
+async function start(){
+  st={type:null,adds:new Set()};
+  await bot('Hey! 👋 Thanks for reaching out to <strong>Meltpoint Studio</strong>.',500);
+  await bot('Which website do you need? Tap one 👇');
+  const g=el('<div class="cards" role="list"></div>');
+  TYPES.forEach(t=>{
+    const c=el(`<button class="card" role="listitem"><span class="ic">${t.ic}</span>${t.badge?`<span class="tag">${t.badge}</span>`:''}<b></b><span></span><em>from ${usd(t.price)}</em></button>`);
+    c.querySelector('b').textContent=t.name;c.querySelector('span:not(.ic):not(.tag)').textContent=t.desc;
+    c.onclick=()=>{ if(w.classList.contains('done'))return; w.classList.add('done');c.classList.add('sel');pickType(t); };
+    g.append(c);
+  });
+  const w=ui(g,true);
+}
+
+async function pickType(t){
+  st.type=t;me(t.name);
+  await bot(`Great choice — a <strong>${t.name}</strong> starts at <strong>${usd(t.price)}</strong>.`);
+  await bot('Do you need any add-ons?',450);
+  const b=el('<div class="btns"><button class="b pri">Yes</button><button class="b">No</button></div>');
+  const w=ui(b);
+  const [y,n]=b.children;
+  y.onclick=()=>{w.classList.add('done');y.classList.add('sel');me('Yes');pickAdds();};
+  n.onclick=()=>{w.classList.add('done');n.classList.add('sel');me('No');quote();};
+}
+
+async function pickAdds(){
+  await bot('Pick as many as you like, then tap <strong>Done</strong>.');
+  const list=ADDS.filter(a=>!(a.not&&a.not===st.type.id));
+  const b=el('<div class="btns"></div>');
+  list.forEach(a=>{
+    const x=el(`<button class="b" aria-pressed="false" title=""></button>`);
+    x.title=a.desc;x.innerHTML=`${a.name}<small>+${usd(a.price)}</small>`;
+    x.onclick=()=>{const on=!st.adds.has(a.id);on?st.adds.add(a.id):st.adds.delete(a.id);x.setAttribute('aria-pressed',on);d.textContent=st.adds.size?`Done (${st.adds.size})`:'Done';};
+    b.append(x);
+  });
+  const d=el('<button class="b pri">Done</button>');b.append(d);
+  const w=ui(b);
+  d.onclick=()=>{
+    w.classList.add('done');b.querySelectorAll('[aria-pressed=true]').forEach(x=>x.classList.add('sel'));d.classList.add('sel');
+    const names=list.filter(a=>st.adds.has(a.id)).map(a=>a.name);
+    me(names.length?names.join(', '):'No add-ons');quote();
+  };
+}
+
+async function quote(){
+  const t=st.type, adds=ADDS.filter(a=>st.adds.has(a.id));
+  const total=t.price+adds.reduce((s,a)=>s+a.price,0), dep=Math.round(total/2);
+  await bot('Here’s your quote ✦',700);
+  const items=[`<li><div>${t.name}<span>${t.desc}</span></div><b>${usd(t.price)}</b></li>`].concat(adds.map(a=>`<li><div>${a.name}<span>${a.desc}</span></div><b>${usd(a.price)}</b></li>`)).join('');
+  const q=el(`<div><div class="q">
+    <div class="top"><b>Your quote</b><span>Valid 14 days · USD</span></div>
+    <ul>${items}</ul>
+    <div class="tot"><span>Total</span><b>${usd(total)}</b></div>
+    <div class="meta"><div>Deposit to start: <b>${usd(dep)}</b> (50%), rest on launch</div><div>Delivery: <b>2 weeks</b> — 1 week or 3 days available for a rush fee</div></div>
+  </div>
+  <div class="acts">
+    <a class="b pri" id="ig" href="https://ig.me/m/meltpointstudio" target="_blank" rel="noopener">Send this quote to us on Instagram</a>
+    <a class="b" id="pdf" href="#">Open full quote &amp; download PDF</a>
+    <button class="b" id="again">Start over</button>
+  </div></div>`);
+  const qs=new URLSearchParams({q:t.id});if(adds.length)qs.set('a',adds.map(a=>a.id).join(','));
+  q.querySelector('#pdf').href='./?'+qs.toString()+'#pricing';
+  const text=`Hi Meltpoint! My quote: ${t.name} (${usd(t.price)})`+(adds.length?' + '+adds.map(a=>`${a.name} (${usd(a.price)})`).join(' + '):'')+` = ${usd(total)}. I'd like to go ahead.`;
+  q.querySelector('#ig').addEventListener('click',()=>{ try{navigator.clipboard.writeText(text);toast('Quote copied — paste it in the chat');}catch(_){} });
+  q.querySelector('#again').onclick=()=>{chat.innerHTML='';start();};
+  ui(q);
+  await bot('Tap <strong>Send this quote</strong> and paste it in our DMs. I’ll confirm and get you started.',900);
+}
+
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),2600);}
+start();
+})();
+</script>
+</body>
+</html>
+<script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="2871e988-9f92-4504-939c-834f8f4a8867" data-app-host="app.netlify.com" data-account-tier="free"></script>

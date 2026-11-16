@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=2871e988-9f92-4504-939c-834f8f4a8867
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Pay — Meltpoint Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0606;--bone:#f4eee8;--mute:#a49aa8;--clay:#ff5a4e;--line:rgba(243,241,255,.13);--g1:#ffb27a;--g2:#ff3d3d;--g3:#b3123a;--in1:#0e0808;--in2:#140c0c;--ok:#5fd38d}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink)}
+body{min-height:100vh;color:var(--bone);font:400 16px/1.55 'Inter Tight',system-ui,sans-serif;background:radial-gradient(1200px 600px at 80% -10%,rgba(179,18,58,.22),transparent 60%),radial-gradient(900px 500px at -10% 110%,rgba(255,90,78,.1),transparent 60%),var(--ink);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px clamp(18px,4vw,48px);font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--line);background:rgba(11,6,6,.9)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:18px;height:18px}
+.nav a.back{color:var(--mute);text-decoration:none}
+.wrap{max-width:620px;margin:0 auto;padding:42px 20px 80px}
+.eyebrow{font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";width:48px;height:1px;background:currentColor;opacity:.6}
+h1{font:800 clamp(34px,8vw,52px)/1 'Syne',sans-serif;letter-spacing:-.02em;text-transform:uppercase;margin:16px 0 12px}
+h1 em{font:italic 400 1.06em 'Instrument Serif',serif;text-transform:none;background:linear-gradient(90deg,var(--g1),var(--g2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mute);margin-bottom:26px}
+.card{border:1px solid var(--line);border-radius:22px;padding:24px;background:rgba(14,8,8,.8);margin-top:14px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.row:last-child{border-bottom:0}
+.row span{color:var(--mute)}
+.lines .row span{color:var(--bone)}
+.lines .row b{font-weight:500;color:var(--mute)}
+.tabs{display:inline-flex;border:1px solid var(--line);border-radius:99px;padding:3px;gap:2px;margin-bottom:16px}
+.tabs button{border:0;background:none;color:var(--mute);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.1em;padding:8px 14px;border-radius:99px;cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--bone);color:var(--ink)}
+.amt{display:flex;align-items:baseline;gap:8px;margin:4px 0 2px}
+.amt b{font:800 clamp(40px,10vw,56px)/1 'Syne',sans-serif;letter-spacing:-.02em}
+.amt small{font:500 12px 'JetBrains Mono',monospace;color:var(--mute);letter-spacing:.1em}
+.sub{color:var(--mute);font-size:13.5px}
+.which{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.which button{border:1px solid var(--line);background:var(--in1);color:var(--bone);border-radius:14px;padding:12px;text-align:left;cursor:pointer;font:500 14px 'Inter Tight',sans-serif}
+.which button small{display:block;color:var(--mute);font-size:12px;margin-top:2px}
+.which button[aria-pressed=true]{border-color:var(--clay);box-shadow:0 0 0 3px rgba(255,90,78,.15)}
+form.gate{display:grid;gap:8px;margin-top:6px}
+input{width:100%;min-width:0;font:400 15px 'Inter Tight',sans-serif;color:var(--bone);background:var(--in1);border:1px solid var(--line);border-radius:12px;padding:13px 14px;outline:none}
+input:focus{border-color:var(--clay)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn{border:0;border-radius:99px;padding:15px 18px;font:600 15px 'Inter Tight',sans-serif;color:var(--ink);background:linear-gradient(90deg,var(--g1),var(--g2) 60%,var(--g3));cursor:pointer;width:100%}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--bone)}
+.btn:disabled{opacity:.6}
+.det{display:grid;gap:2px}
+.d{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.d:last-child{border-bottom:0}
+.d small{display:block;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:3px}
+.d b{font:500 16px 'JetBrains Mono',monospace;word-break:break-all}
+.cp{flex:none;border:1px solid var(--line);background:none;color:var(--bone);border-radius:99px;padding:7px 12px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.08em;cursor:pointer}
+.cp.ok{border-color:var(--ok);color:var(--ok)}
+.ref b{color:var(--g1)}
+.steps{list-style:none;counter-reset:s;display:grid;gap:10px;margin-top:4px}
+.steps li{counter-increment:s;display:flex;gap:12px;color:var(--mute);font-size:14.5px}
+.steps li::before{content:counter(s);flex:none;width:24px;height:24px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font:500 11px 'JetBrains Mono',monospace;color:var(--bone)}
+.steps b{color:var(--bone);font-weight:500}
+.msg{font-size:14px;color:var(--mute);margin-top:10px}
+.msg.ok{color:var(--ok)}
+.msg.bad{color:#ff8a80}
+.note{font-size:12.5px;color:var(--mute);margin-top:18px;text-align:center}
+.empty{text-align:center}
+.empty .btn{display:inline-block;width:auto;text-decoration:none;margin-top:16px;padding:14px 22px}
+[hidden]{display:none!important}
+@media (max-width:420px){.two,.which{grid-template-columns:1fr}.card{padding:20px}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <a class='brand' href='/'><svg viewBox="0 0 64 64"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb27a"/><stop offset=".5" stop-color="#ff3d3d"/><stop offset="1" stop-color="#b3123a"/></linearGradient></defs><path d="M32 6C32 6 13 29 13 41a19 19 0 0 0 38 0C51 29 32 6 32 6z" fill="url(#lg)"/><circle cx="32" cy="42" r="6" fill="#0b0606"/></svg>Meltpoint</a>
+  <a class='back' href='/#pricing'>← Pricing</a>
+</header>
+
+<main class="wrap">
+  <p class="eyebrow">Secure payment</p>
+  <h1>Pay your <em>deposit.</em></h1>
+  <p class="lead" id="lead">Pay by card or by bank transfer. Your project starts as soon as the deposit arrives.</p>
+
+  <div id="none" class="card empty" hidden>
+    <p>No package selected yet. Build your package first and your exact amount will appear here.</p>
+    <a class='btn' href='/#pricing'>Build your package →</a>
+  </div>
+
+  <div id="main" hidden>
+    <section class="card">
+      <div class="which" id="which">
+        <button type="button" data-p="dep" aria-pressed="true">50% deposit<small>To start your project</small></button>
+        <button type="button" data-p="bal" aria-pressed="false">Final 50%<small>When your site goes live</small></button>
+      </div>
+      <div class="tabs" id="cur"><button type="button" data-c="USD" aria-pressed="true">USD</button><button type="button" data-c="GBP" aria-pressed="false">GBP</button><button type="button" data-c="EUR" aria-pressed="false">EUR</button></div>
+      <p class="sub" id="amtLbl">Amount due now</p>
+      <div class="amt"><b id="amt">$0</b><small id="amtCur">USD</small></div>
+      <p class="sub" id="amtNote"></p>
+    </section>
+
+    <section class="card lines" id="lines"></section>
+
+    <section class="card" id="gateCard">
+      <p style="margin-bottom:10px"><b>Your details</b> <span class="sub">— so I can match your payment and send your receipt.</span></p>
+      <form class="gate" id="gate">
+        <div class="two"><input id="nm" required placeholder="Your name" autocomplete="name"><input id="em" type="email" required placeholder="Your email" autocomplete="email"></div>
+        <input id="wa" placeholder="WhatsApp (optional)" autocomplete="tel" inputmode="tel">
+        <button class="btn">Show payment details →</button>
+      </form>
+    </section>
+
+    <section class="card" id="bankCard" hidden>
+      <div id="cardBox">
+        <p style="margin-bottom:4px"><b>Pay by card</b> <span class="sub">Visa, Mastercard, Apple Pay, Google Pay.</span></p>
+        <a class="btn" id="cardBtn" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none;margin:10px 0 6px">Pay by card →</a>
+        <p class="sub" id="cardHint"></p>
+        <div style="height:1px;background:var(--line);margin:18px 0 16px"></div>
+      </div>
+      <div id="wiseBox" hidden></div>
+      <p style="margin-bottom:6px"><b>Bank transfer</b> <span class="sub">Pay from any bank.</span></p>
+      <div class="det" id="det"></div>
+      <div class="d ref"><div><small>Payment reference — please include it</small><b id="ref"></b></div><button class="cp" type="button" data-copy="ref">Copy</button></div>
+      <ol class="steps" style="margin-top:16px">
+        <li><span>Pay <b id="stAmt"></b> by card or by bank transfer.</span></li>
+        <li><span>Add <b id="stRef"></b> as the note or reference so I can match it.</span></li>
+        <li><span>Tap <b>I've sent the payment</b> below — I'll confirm by email.</span></li>
+      </ol>
+      <button class="btn" id="paid" style="margin-top:18px">I've sent the payment ✓</button>
+      <p class="msg" id="paidMsg"></p>
+    </section>
+
+    <p class="note">Fixed price · You approve everything before the final payment · Questions? <a href='/#contact'>Contact me</a></p>
+  </div>
+</main>
+
+<script>
+/* ===== Your payment details — shown only after the client enters their name & email ===== */
+const PAY={
+  GBP:{ accountName:'', sortCode:'', accountNumber:'', bank:'' },          // UK transfers
+  INTL:{ accountName:'', iban:'', bic:'', bank:'', address:'' },             // EUR / international (optional)
+  USD:{ accountName:'', routing:'', accountNumber:'', type:'Checking', bank:'' }, // US transfers (optional)
+  checkoutUrl:'https://meltpoint-ig-bot.netlify.app/.netlify/functions/checkout', // locked-amount card checkout (amount is set by the server)
+  stripeLink:'https://buy.stripe.com/00w7sN3Po6hR6Gx4RxeQM00', // card / Apple Pay / Google Pay (USD, customer enters amount)
+  wisetag:'',
+  web3formsKey:'41f6903f-8dd6-423d-86d8-369b7be4d554',   // same free key as the main site — emails you when someone taps "I've sent the payment"
+  rates:{USD:1,GBP:0.76,EUR:0.87}
+};
+/* ========================================================================================== */
+
+const $=id=>document.getElementById(id);
+const q=new URLSearchParams(location.search);
+const total=Math.max(0,Math.round(+q.get('t')||0));
+let part=q.get('p')==='bal'?'bal':'dep', cur=(q.get('c')||'USD').toUpperCase(); if(!PAY.rates[cur]) cur='USD';
+const items=(q.get('i')||'').split('|').map(s=>s.trim()).filter(Boolean).slice(0,12);
+const tl=q.get('tl')||'';
+const list=k=>(q.get(k)||'').split(',').map(x=>x.trim()).filter(Boolean);
+const pick={mode:q.get('m')==='up'?'up':'new',type:q.get('ty')||'',ups:list('up'),speed:q.get('sp')||'',adds:list('ad'),promo:q.get('pr')||''};
+const locked=!!(PAY.checkoutUrl&&pick.speed&&(pick.type||pick.ups.length));
+const SYM={USD:'$',GBP:'£',EUR:'€'};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+if(!total){ $('none').hidden=false; if(q.get('paid')==='1') $('none').innerHTML='<h2 style="margin-bottom:8px">Payment received ✓</h2><p>Thank you! Your card payment went through'+(q.get('ref')?' — reference <b>'+esc(q.get('ref'))+'</b>':'')+'. Stripe has emailed your receipt, and I\'ll be in touch shortly to get started.</p><p style="margin-top:14px"><a href="index.html">← Back to Meltpoint Studio</a></p>'; } else { $('main').hidden=false; }
+
+const usdPart=()=>part==='dep'?Math.round(total/2):total-Math.round(total/2);
+const conv=v=>Math.round(v*PAY.rates[cur]);
+const fmt=v=>SYM[cur]+conv(v).toLocaleString('en-US');
+let ref=sessionStorage.getItem('mpRef'); if(!ref){ ref='MP-'+Math.floor(1000+Math.random()*9000); try{sessionStorage.setItem('mpRef',ref)}catch(_){} }
+
+function bankRows(){
+  const rows=[];
+  const add=(k,v)=>{ if(v) rows.push([k,v]); };
+  if(cur==='GBP'&&PAY.GBP.accountNumber){ const g=PAY.GBP; add('Account name',g.accountName); add('Sort code',g.sortCode); add('Account number',g.accountNumber); add('Bank',g.bank); }
+  else if(cur==='USD'&&PAY.USD.accountNumber){ const u=PAY.USD; add('Account name',u.accountName); add('Routing number (ACH)',u.routing); add('Account number',u.accountNumber); add('Account type',u.type); add('Bank',u.bank); }
+  else if(PAY.INTL.iban){ const i=PAY.INTL; add('Account name',i.accountName); add('IBAN',i.iban); add('SWIFT / BIC',i.bic); add('Bank',i.bank); add('Bank address',i.address); }
+  else if(PAY.GBP.accountNumber){ const g=PAY.GBP; add('Account name',g.accountName); add('Sort code',g.sortCode); add('Account number',g.accountNumber); add('Bank',g.bank);
+    rows.push(['Note',`Send in GBP — ${SYM.GBP}${Math.round(usdPart()*PAY.rates.GBP).toLocaleString('en-US')}. Your bank converts it for you.`]); }
+  return rows;
+}
+function render(){
+  document.querySelectorAll('#which button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p===part));
+  document.querySelectorAll('#cur button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.c===cur));
+  $('amt').textContent=fmt(usdPart()); $('amtCur').textContent=cur;
+  $('amtLbl').textContent=part==='dep'?'50% deposit — due now':'Final 50% — due at launch';
+  $('amtNote').textContent=`Project total ${fmt(total)} ${cur}`+(cur!=='USD'?' · converted from USD at an approximate rate':'');
+  $('lines').innerHTML='<p style="margin-bottom:4px"><b>Your package</b></p>'+(items.length?items.map(x=>`<div class="row"><span>${esc(x)}</span></div>`).join(''):'')+(tl?`<div class="row"><span>Timeline</span><b>${esc(tl)}</b></div>`:'')+`<div class="row"><span>Total</span><b style="color:var(--bone)">${fmt(total)} ${cur}</b></div>`;
+  const rows=bankRows();
+  $('det').innerHTML=rows.length?rows.map(([k,v],n)=>`<div class="d"><div><small>${esc(k)}</small><b id="dv${n}">${esc(v)}</b></div>${k==='Note'||k==='Bank'||k==='Account type'?'':`<button class="cp" type="button" data-copy="dv${n}">Copy</button>`}</div>`).join(''):`<p class="msg" style="margin:4px 0 0">I'll email you my bank details for this transfer.</p><button class="btn ghost" type="button" id="askBank" style="margin-top:10px">Email me the bank details →</button><p class="msg" id="askMsg"></p>`;
+  const sl=PAY.stripeLink; $('cardBox').hidden=!(sl||locked);
+  if(locked){ $('cardBtn').href='#'; $('cardBtn').removeAttribute('target'); $('cardHint').innerHTML=`You'll pay exactly <b>$${usdPart().toLocaleString('en-US')} USD</b> on Stripe's secure page — the amount is already set for you. Card payments are charged in USD.`; }
+  else if(sl){ const usd=usdPart(); const u=new URL(sl); u.searchParams.set('client_reference_id',ref); const em=$('em').value.trim(); if(em) u.searchParams.set('prefilled_email',em); $('cardBtn').href=u.toString(); $('cardHint').innerHTML=`Enter <b>$${usd.toLocaleString('en-US')} USD</b> on the next screen and add <b>${ref}</b> as the reference. Card payments are charged in USD.`; }
+  $('wiseBox').hidden=true;
+  $('ref').textContent=ref; $('stRef').textContent=ref; $('stAmt').textContent=fmt(usdPart())+' '+cur;
+}
+document.addEventListener('click',async e=>{
+  const cb=e.target.closest('#cardBtn'); if(cb&&locked){ e.preventDefault(); if(cb.dataset.busy) return; cb.dataset.busy='1'; const t0=cb.textContent; cb.textContent='Opening secure checkout…';
+    try{ const r=await fetch(PAY.checkoutUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...pick,part,ref,email:$('em').value.trim(),back:location.search})}); const j=await r.json(); if(r.ok&&j.url){ location.href=j.url; return; } throw new Error(j.error||'failed'); }
+    catch(_){ delete cb.dataset.busy; cb.textContent=t0; $('cardHint').innerHTML=`Card checkout couldn't open just now. Please try again in a moment, pay by bank transfer below, or <a href="index.html#contact">contact me</a> with reference <b>${ref}</b>.`; }
+    return; }
+  const p=e.target.closest('#which button'); if(p){ part=p.dataset.p; render(); return; }
+  const c=e.target.closest('#cur button'); if(c){ cur=c.dataset.c; render(); return; }
+  if(e.target.id==='askBank'){ const b=e.target, m=$('askMsg'); b.disabled=true; b.textContent='Sending…'; const ok=await notify('bank'); if(ok){ b.textContent='Requested ✓'; m.className='msg ok'; m.innerHTML=`Done — my bank details will arrive at <b>${esc($('em').value.trim())}</b> shortly.`; } else { b.disabled=false; b.textContent='Email me the bank details →'; m.className='msg bad'; m.innerHTML=`Couldn't send automatically — please <a href="index.html#contact">contact me</a> with reference ${ref}.`; } return; }
+  const cp=e.target.closest('.cp'); if(cp){ const t=$(cp.dataset.copy).textContent.replace(/\s+/g,cp.dataset.copy.startsWith('dv')?'':' ').trim();
+    try{ await navigator.clipboard.writeText(t); cp.textContent='Copied ✓'; cp.classList.add('ok'); }catch(_){ cp.textContent='Hold to copy'; } setTimeout(()=>{cp.textContent='Copy';cp.classList.remove('ok')},1800); }
+});
+async function notify(kind){
+  if(!PAY.web3formsKey) return false;
+  const body={access_key:PAY.web3formsKey,from_name:'Meltpoint Studio website',subject:`${kind==='paid'?'💸 Payment sent':kind==='bank'?'🏦 Send bank details':'Payment page opened'} — ${ref} — ${fmt(usdPart())} ${cur}`,
+    name:$('nm').value.trim(),email:$('em').value.trim(),whatsapp:$('wa').value.trim(),
+    message:`${kind==='paid'?'Client says they have SENT the payment.':kind==='bank'?'Client asked for bank details — please email them.':'Client opened the payment details.'}\nReference: ${ref}\nPaying: ${part==='dep'?'50% deposit':'Final 50%'} — ${fmt(usdPart())} ${cur}\nProject total: ${fmt(total)} ${cur} ($${total.toLocaleString('en-US')} USD)\nPackage: ${items.join(', ')}${tl?'\nTimeline: '+tl:''}`};
+  try{ const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)}); return r.ok; }catch(_){ return false; }
+}
+$('gate').onsubmit=e=>{ e.preventDefault(); $('gateCard').hidden=true; $('bankCard').hidden=false; render(); $('bankCard').scrollIntoView({behavior:'smooth',block:'start'}); notify('open'); };
+$('paid').onclick=async()=>{ const b=$('paid'), m=$('paidMsg'); b.disabled=true; b.textContent='Sending…';
+  const ok=await notify('paid');
+  if(ok){ b.textContent='Payment noted ✓'; m.className='msg ok'; m.innerHTML=`Thank you! I'll confirm by email at <b>${esc($('em').value.trim())}</b> as soon as it arrives (bank transfers can take a few hours to 2 days).`; }
+  else { b.disabled=false; b.textContent="I've sent the payment ✓"; m.className='msg bad'; m.textContent="Couldn't notify me automatically — please email or message me your reference "+ref+"."; } };
+render();
+</script>
+</body>
+</html>
+<script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="2871e988-9f92-4504-939c-834f8f4a8867" data-app-host="app.netlify.com" data-account-tier="free"></script>
