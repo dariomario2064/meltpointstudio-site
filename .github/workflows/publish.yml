@@ -23,22 +23,28 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Copy current site from Netlify (first run only)
+      - name: Remove old hosting tags
         run: |
-          if [ ! -f index.html ]; then
-            for f in index.html 404.html pay.html quote.html; do
-              curl -fsSL "https://scintillating-blancmange-6c7923.netlify.app/$f" -o "$f"
-            done
+          python3 - <<'PY'
+          import re, pathlib
+          for p in pathlib.Path('.').glob('*.html'):
+              s = p.read_text(encoding='utf-8')
+              t = re.sub(r'\s*<!--\s*This site is hosted on Netlify.*?-->', '', s, flags=re.S)
+              t = re.sub(r'\s*<script[^>]*/\.netlify/scripts/[^>]*>\s*</script>', '', t)
+              if t != s:
+                  p.write_text(t, encoding='utf-8')
+                  print('cleaned', p)
+          PY
+          if ! git diff --quiet; then
             git config user.name "Meltpoint Studio"
             git config user.email "dario@meltpointstudio.com"
-            git add index.html 404.html pay.html quote.html
-            git commit -m "Import site from Netlify"
+            git commit -am "Remove old hosting tags"
             git push
           fi
       - name: Prepare files
         run: |
           mkdir -p _site
-          cp index.html 404.html pay.html quote.html _site/
+          cp *.html _site/
           [ -f CNAME ] && cp CNAME _site/ || true
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
