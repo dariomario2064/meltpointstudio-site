@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Business Automations — Meltpoint Studio</title>
+<meta name="description" content="47 business automations you can try live: lead chatbots, WhatsApp replies, invoices, reminders, dashboards and more. Built and maintained by Meltpoint Studio.">
+<meta property="og:title" content="Business Automations — Meltpoint Studio">
+<meta property="og:description" content="Try 47 automations live and see exactly what your business gets.">
+<meta name="theme-color" content="#0b0606">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 6C32 6 13 29 13 41a19 19 0 0 0 38 0C51 29 32 6 32 6z' fill='%23ff3d3d'/%3E%3Ccircle cx='32' cy='42' r='6' fill='%230b0606'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0606;--ink2:#120a0a;--ink3:#1a0f10;--bone:#f4eee8;--mute:#a49aa8;--clay:#ff5a4e;--line:rgba(243,241,255,.12);--line2:rgba(243,241,255,.22);--g1:#ffb27a;--g2:#ff3d3d;--g3:#b3123a;--ok:#5fd38d;--warn:#ffc46b;--wa:#25d366}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{color:var(--bone);font:400 16px/1.55 'Inter Tight',system-ui,sans-serif;background:radial-gradient(1100px 600px at 85% -5%,rgba(179,18,58,.25),transparent 60%),radial-gradient(900px 500px at -10% 40%,rgba(255,90,78,.08),transparent 60%),var(--ink);-webkit-font-smoothing:antialiased;min-height:100vh}
+body.lock{overflow:hidden}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+.mono{font-family:'JetBrains Mono',monospace}
+.nav{position:sticky;top:0;z-index:30;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px clamp(16px,4vw,48px);font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;background:rgba(11,6,6,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}.brand svg{width:18px;height:18px}.brand span{color:var(--mute)}@media(max-width:480px){.brand span{display:none}.navlink{padding:8px 11px}}
+.navr{display:flex;gap:8px;align-items:center}
+.navlink{text-decoration:none;padding:9px 14px;border-radius:99px;border:1px solid var(--line);color:var(--bone)}
+.navlink.solid{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.eyebrow{font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);display:flex;gap:12px;align-items:center}
+.eyebrow::after{content:"";height:1px;width:48px;background:currentColor;opacity:.6}
+h1,h2,h3{font-family:'Syne',sans-serif;letter-spacing:-.03em}
+h1{font-weight:800;font-size:clamp(42px,8.5vw,104px);line-height:.92;margin:20px 0 18px;text-transform:uppercase}
+h1 em,h2 em{font:italic 400 1.04em 'Instrument Serif',serif;text-transform:none;letter-spacing:-.01em;background:linear-gradient(90deg,var(--g1),var(--g2));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-weight:700;font-size:clamp(30px,5vw,56px);line-height:1;margin:14px 0 14px}
+.lede{color:var(--mute);font-size:clamp(16px,2vw,19px);max-width:620px}
+.lede b{color:var(--bone);font-weight:500}
+.hero{padding:clamp(48px,9vw,110px) 0 40px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line2);background:rgba(255,255,255,.03);color:var(--bone);padding:13px 20px;border-radius:99px;text-decoration:none;font-weight:500;cursor:pointer;font-size:15px;transition:transform .15s,background .2s}
+.btn:active{transform:scale(.97)}
+.btn.hot{background:linear-gradient(90deg,var(--g1),var(--g2) 55%,var(--g3));border-color:transparent;color:#fff}
+.btn.sm{padding:9px 14px;font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:40px;max-width:760px}
+.stat{border:1px solid var(--line);border-radius:18px;padding:16px 18px;background:rgba(18,10,10,.6)}
+.stat b{display:block;font:800 30px/1 'Syne',sans-serif}
+.stat span{color:var(--mute);font-size:13px}
+.sec{padding:56px 0}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:24px}
+.step{border:1px solid var(--line);border-radius:20px;padding:22px;background:rgba(18,10,10,.6)}
+.step .n{font:500 11px 'JetBrains Mono',monospace;color:var(--clay);letter-spacing:.14em}
+.step h3{font-size:20px;margin:10px 0 6px}
+.step p{color:var(--mute);font-size:15px}
+.bar{position:sticky;top:52px;z-index:20;background:rgba(11,6,6,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:12px 0;border-bottom:1px solid var(--line);margin-bottom:22px}
+.search{width:100%;border:1px solid var(--line2);background:rgba(255,255,255,.03);border-radius:14px;padding:12px 14px;outline:none;font-size:16px}
+.search:focus{border-color:var(--clay)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-top:10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:none;color:var(--mute);padding:8px 13px;border-radius:99px;cursor:pointer;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.06em;white-space:nowrap}
+.chip[aria-pressed=true]{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.card{border:1px solid var(--line);border-radius:22px;padding:20px;background:linear-gradient(180deg,rgba(26,15,16,.9),rgba(14,8,8,.9));display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--line2);transform:translateY(-2px)}
+.ctop{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ico{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(255,178,122,.18),rgba(179,18,58,.25));border:1px solid rgba(255,90,78,.3)}
+.ico svg{width:21px;height:21px;stroke:var(--g1);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tag{font:500 10px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);border:1px solid var(--line);padding:5px 8px;border-radius:99px}
+.tier{font:500 10px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;padding:5px 8px;border-radius:99px}
+.tier.s{color:#9fe3bb;background:rgba(95,211,141,.1)}.tier.g{color:#ffc9a3;background:rgba(255,178,122,.12)}.tier.p{color:#ff9aa8;background:rgba(255,61,61,.14)}
+.card h3{font-size:19px;line-height:1.15}
+.card p{color:var(--mute);font-size:14.5px}
+.card ul{list-style:none;display:grid;gap:4px;font-size:13.5px}
+.card li{padding-left:18px;position:relative}
+.card li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g2))}
+.cfoot{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.price{font-size:13px;color:var(--mute)}.price b{color:var(--bone);font:700 17px 'Syne',sans-serif}
+.empty{color:var(--mute);padding:40px 0;text-align:center}
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:24px}
+.tcard{border:1px solid var(--line);border-radius:24px;padding:26px;background:rgba(18,10,10,.7)}
+.tcard.feat{border:1px solid rgba(255,90,78,.55);background:linear-gradient(180deg,rgba(179,18,58,.18),rgba(14,8,8,.9))}
+.tcard .amt{font:800 44px/1 'Syne',sans-serif;margin:14px 0 4px}
+.tcard .mo{color:var(--mute);font-size:14px}
+.tcard ul{list-style:none;margin-top:16px;display:grid;gap:8px;font-size:14.5px;color:#e6dcd6}
+.tcard li::before{content:"✓ ";color:var(--ok)}
+.faq{display:grid;gap:10px;margin-top:24px;max-width:820px}
+.faq details{border:1px solid var(--line);border-radius:18px;padding:16px 20px;background:rgba(18,10,10,.6)}
+.faq summary{cursor:pointer;font-weight:500;list-style:none}.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";float:right;color:var(--clay)}
+.faq details[open] summary::after{content:"–"}
+.faq p{color:var(--mute);margin-top:10px;font-size:15px}
+footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--mute);font-size:14px;margin-top:40px}
+footer a{color:var(--bone)}
+/* modal */
+.ov{position:fixed;inset:0;z-index:50;background:rgba(5,2,2,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
+.ov.on{display:flex}
+.sheet{width:min(980px,100%);max-height:92vh;overflow:auto;border:1px solid var(--line2);border-radius:26px;background:var(--ink2);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+.shead{grid-column:1/-1;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:20px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--ink2);z-index:2}
+.shead h3{font-size:clamp(20px,3vw,28px);line-height:1.1;margin-top:6px}
+.x{border:1px solid var(--line2);background:none;border-radius:99px;width:38px;height:38px;flex:0 0 38px;cursor:pointer;font-size:18px}
+.demo{padding:20px 22px;border-right:1px solid var(--line);min-width:0}
+.info{padding:20px 22px}
+.info h4,.demo h4{font:500 11px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);margin-bottom:10px}
+.info p{color:#ddd2cc;font-size:15px}
+.info ul{list-style:none;display:grid;gap:7px;margin:12px 0 18px;font-size:14.5px}
+.info li::before{content:"✓ ";color:var(--ok)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;margin:12px 0 18px;padding:14px;border:1px solid var(--line);border-radius:16px}
+.kv span{color:var(--mute)}
+.note{font-size:12px;color:var(--mute);margin-top:12px}
+@media(max-width:760px){.ov{padding:0;align-items:flex-end}.sheet{grid-template-columns:1fr;border-radius:24px 24px 0 0;max-height:94vh}.demo{border-right:0;border-bottom:1px solid var(--line)}.bar{top:50px}}
+/* demo parts */
+.phone{border:1px solid var(--line2);border-radius:22px;overflow:hidden;background:#0f0909;max-width:420px;margin:0 auto}
+.ph{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);font-size:14px;font-weight:500}
+.ph i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;background:linear-gradient(135deg,var(--g1),var(--g3));color:#fff}
+.ph small{display:block;color:var(--ok);font-weight:400;font-size:11px}
+.wa .ph{background:#12201a}.wa .ph i{background:var(--wa)}
+.ig .ph i{background:linear-gradient(135deg,#feda75,#d62976,#4f5bd5)}
+.msgs{height:300px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth}
+.m{max-width:84%;padding:9px 12px;border-radius:16px;font-size:14px;line-height:1.4;white-space:pre-line;animation:pop .25s ease}
+.m.b{background:#231516;border:1px solid var(--line);border-bottom-left-radius:5px;align-self:flex-start}
+.m.u{background:linear-gradient(135deg,#ff6a4d,#c81d45);color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
+.wa .m.b{background:#1c2a24}.wa .m.u{background:#0f6b4f}
+.m.sys{align-self:center;background:rgba(95,211,141,.1);color:#9fe3bb;border:1px solid rgba(95,211,141,.3);font-size:12.5px;max-width:95%;text-align:center}
+.typing{align-self:flex-start;color:var(--mute);font-size:12px;padding:4px 8px}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.qr{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 10px}
+.qr button{border:1px solid var(--line2);background:none;border-radius:99px;padding:7px 11px;font-size:12.5px;cursor:pointer}
+.inrow{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}
+.inrow input{flex:1;min-width:0;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:99px;padding:10px 14px;outline:none;font-size:16px}
+.inrow button{border:0;border-radius:99px;padding:0 16px;background:linear-gradient(90deg,var(--g2),var(--g3));color:#fff;cursor:pointer}
+.fld{display:grid;gap:5px;margin-bottom:10px}
+.fld label{font-size:12px;color:var(--mute)}
+.fld input,.fld select,.fld textarea{width:100%;border:1px solid var(--line2);background:rgba(255,255,255,.04);border-radius:12px;padding:10px 12px;outline:none;font-size:16px}
+.fld textarea{min-height:90px;resize:vertical}
+.fld select option{background:#1a0f10}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.out{margin-top:14px}
+.doc{background:#f7f2ee;color:#1d1213;border-radius:16px;padding:20px;font-size:13.5px;animation:pop .3s ease}
+.doc h5{font:800 18px 'Syne',sans-serif;margin-bottom:4px}
+.doc .muted{color:#7a6b6e}
+.doc table{width:100%;border-collapse:collapse;margin:12px 0}
+.doc td,.doc th{padding:7px 4px;border-bottom:1px solid #e3d8d2;text-align:left}
+.doc th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#7a6b6e}
+.doc .tot{font:800 20px 'Syne',sans-serif;text-align:right}
+.doc .paybtn{display:inline-block;margin-top:10px;background:#1d1213;color:#fff;padding:9px 14px;border-radius:99px;font-size:12.5px}
+.tl{display:grid;gap:10px;margin-top:12px}
+.tli{display:grid;grid-template-columns:86px 1fr;gap:10px;opacity:.25;transition:opacity .4s}
+.tli.on{opacity:1}
+.tli .when{font:500 11px 'JetBrains Mono',monospace;color:var(--clay);padding-top:10px}
+.tli .bub{border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:#1a0f10;font-size:13.5px;white-space:pre-line}
+.tli .ch{font:500 10px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:4px}
+.tli.done .bub{border-color:rgba(95,211,141,.4)}
+.sheetx{width:100%;border-collapse:collapse;font-size:13px;background:#0f0909;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.sheetx th{background:#1f1314;text-align:left;padding:8px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--mute);text-transform:uppercase}
+.sheetx td{padding:8px;border-top:1px solid var(--line)}
+.sheetx tr.new td{animation:flash 1.2s ease}
+@keyframes flash{0%{background:rgba(95,211,141,.28)}100%{background:none}}
+.tscroll{overflow-x:auto}
+.mets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.met{border:1px solid var(--line);border-radius:14px;padding:12px;background:#140b0c}
+.met span{font-size:11.5px;color:var(--mute);display:block}
+.met b{font:800 22px 'Syne',sans-serif}
+.met em{font-style:normal;font-size:12px;margin-left:6px}
+.up{color:var(--ok)}.dn{color:#ff8a8a}
+.bars{display:flex;align-items:flex-end;gap:6px;height:130px;margin-top:12px;padding:10px;border:1px solid var(--line);border-radius:14px;background:#140b0c}
+.bars div{flex:1;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,var(--g1),var(--g3));position:relative;transition:height .6s ease;min-height:4px}
+.bars div span{position:absolute;bottom:-18px;left:0;right:0;text-align:center;font-size:10px;color:var(--mute)}
+.alerts{display:grid;gap:6px;margin-top:26px}
+.alert{border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:13px;background:#140b0c;display:flex;gap:8px;align-items:flex-start}
+.alert.r{border-color:rgba(255,120,120,.45)}.alert.y{border-color:rgba(255,196,107,.45)}.alert.g{border-color:rgba(95,211,141,.45)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:99px;padding:3px;gap:2px;margin-bottom:12px}
+.seg button{border:0;background:none;color:var(--mute);padding:7px 12px;border-radius:99px;font:500 11px 'JetBrains Mono',monospace;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--bone);color:var(--ink)}
+.kan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.col{border:1px solid var(--line);border-radius:14px;padding:8px;background:#140b0c;min-height:180px}
+.col h6{font:500 10px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:2px 4px 8px}
+.kc{border:1px solid var(--line2);border-radius:10px;padding:8px;font-size:12.5px;margin-bottom:6px;background:#1f1314;cursor:pointer;animation:pop .25s}
+.kc small{display:block;color:var(--mute);font-size:11px}
+.mail{display:grid;gap:6px}
+.mi{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#140b0c;font-size:13px;display:grid;gap:3px}
+.mi .lb{justify-self:start;font:500 10px 'JetBrains Mono',monospace;padding:3px 7px;border-radius:99px;letter-spacing:.06em}
+.lb.r{background:rgba(255,61,61,.18);color:#ff9aa8}.lb.g{background:rgba(95,211,141,.15);color:#9fe3bb}.lb.y{background:rgba(255,196,107,.15);color:#ffd79a}.lb.b{background:rgba(160,160,255,.15);color:#c4c4ff}.lb.m{background:rgba(255,255,255,.08);color:var(--mute)}
+.mi .dr{color:#9fe3bb;font-size:12.5px;border-left:2px solid var(--ok);padding-left:8px;margin-top:4px}
+.posts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.post{border:1px solid var(--line);border-radius:14px;padding:12px;background:#140b0c;font-size:13px;animation:pop .3s}
+.post b{display:block;font-size:11px;color:var(--clay);font-family:'JetBrains Mono',monospace;margin-bottom:6px}
+.qz button.opt{display:block;width:100%;text-align:left;border:1px solid var(--line2);background:#140b0c;border-radius:12px;padding:11px 13px;margin-bottom:8px;cursor:pointer;font-size:14px}
+.qz button.opt:hover{border-color:var(--clay)}
+.prog{height:4px;background:var(--line);border-radius:4px;margin-bottom:14px;overflow:hidden}.prog div{height:100%;background:linear-gradient(90deg,var(--g1),var(--g2));transition:width .3s}
+.pill{display:inline-block;font:500 10.5px 'JetBrains Mono',monospace;padding:3px 8px;border-radius:99px;background:rgba(255,255,255,.07);color:var(--mute)}
+.score{font:800 15px 'Syne',sans-serif}
+.slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:8px 0}
+.slots button{border:1px solid var(--line2);background:#140b0c;border-radius:10px;padding:9px 4px;cursor:pointer;font-size:13px}
+.slots button[aria-pressed=true]{background:var(--bone);color:var(--ink)}
+.slots button:disabled{opacity:.3;text-decoration:line-through;cursor:not-allowed}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="/"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb27a"/><stop offset=".5" stop-color="#ff3d3d"/><stop offset="1" stop-color="#b3123a"/></linearGradient></defs><path d="M32 6C32 6 13 29 13 41a19 19 0 0 0 38 0C51 29 32 6 32 6z" fill="url(#lg)"/><circle cx="32" cy="42" r="6" fill="#0b0606"/></svg>Meltpoint <span>· Studio</span></a>
+  <nav class="navr"><a class="navlink" href="/">Websites</a><a class="navlink solid" href="#pricing">Pricing</a></nav>
+</header>
+
+<main>
+<section class="hero wrap">
+  <p class="eyebrow">Business automations</p>
+  <h1>Your business<br>on <em>autopilot.</em></h1>
+  <p class="lede">Answer customers, book appointments, chase payments and send invoices — automatically, 24/7. <b>Try every automation live below</b>, so you know exactly what you're getting before you pay.</p>
+  <div class="cta"><a class="btn hot" href="#all">Try the live demos ↓</a><a class="btn" id="heroBook" href="#">Book a free call</a></div>
+  <div class="stats">
+    <div class="stat"><b id="countA">47</b><span>ready-made automations</span></div>
+    <div class="stat"><b>5–7</b><span>days to set up · 3–5 with express</span></div>
+    <div class="stat"><b>24/7</b><span>working while you sleep</span></div>
+    <div class="stat"><b>1</b><span>monthly fee, fully looked after</span></div>
+  </div>
+</section>
+
+<section class="sec wrap" aria-labelledby="how">
+  <p class="eyebrow">How it works</p>
+  <h2 id="how">Three steps. <em>Zero tech.</em></h2>
+  <div class="steps">
+    <div class="step"><span class="n">01</span><h3>Pick &amp; try</h3><p>Play with the live previews below and choose what you want. Not sure? Book a free call and we'll recommend the right ones.</p></div>
+    <div class="step"><span class="n">02</span><h3>We build it</h3><p>We set it up on your own accounts — your email, WhatsApp, spreadsheets and payment links — matched to your business and your words.</p></div>
+    <div class="step"><span class="n">03</span><h3>It runs. We look after it.</h3><p>Your monthly plan covers hosting, monitoring, fixes when apps change, and small updates whenever you need them.</p></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="all" aria-labelledby="allh" style="padding-top:20px">
+  <p class="eyebrow">All automations</p>
+  <h2 id="allh">Try them <em>live.</em></h2>
+  <p class="lede" style="margin-bottom:18px">Tap <b>Try preview</b> on any card. Previews use sample data — your real version runs on your own accounts with your prices, hours and branding.</p>
+  <div class="bar">
+    <label class="sr" for="q">Search automations</label>
+    <input class="search" id="q" type="search" placeholder="Search: invoice, WhatsApp, salon, booking…" autocomplete="off">
+    <div class="chips" id="chips" role="toolbar" aria-label="Filter by category"></div>
+  </div>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>No automation matches that. <a href="#" id="emptyAsk">Ask us for a custom one →</a></p>
+</section>
+
+<section class="sec wrap" id="pricing" aria-labelledby="ph">
+  <p class="eyebrow">Pricing</p>
+  <h2 id="ph">Clear prices. <em>No surprises.</em></h2>
+  <p class="lede">One-time setup, then a monthly plan that keeps everything running. Every automation above is tagged Starter, Growth or Pro.</p>
+  <div class="tiers">
+    <div class="tcard"><span class="tier s">Starter</span><div class="amt">$350</div><div class="mo">setup · then $60/month</div><ul><li>One focused automation</li><li>Reminders, review requests, alerts, reports</li><li>Ready in 5–7 days</li><li>Monitoring and fixes included</li></ul></div>
+    <div class="tcard feat"><span class="tier g">Growth · most popular</span><div class="amt">$750</div><div class="mo">setup · then $120/month</div><ul><li>Customer-facing automations</li><li>Chatbots, follow-ups, invoices, dashboards</li><li>Ready in 5–7 days</li><li>Monthly tweaks and updates included</li></ul></div>
+    <div class="tcard"><span class="tier p">Pro</span><div class="amt">$1,500+</div><div class="mo">setup · then $220/month</div><ul><li>Multi-step systems across your apps</li><li>WhatsApp &amp; Instagram bots, CRM, ordering</li><li>Ready in 5–7 days</li><li>Priority support</li></ul></div>
+  </div>
+  <div class="tcard" style="margin-top:12px;display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between"><div><span class="tier g">Express delivery</span><p style="margin-top:8px;font-size:15px">Need it sooner? Get any automation live in <b>3–5 days</b> instead of 5–7.</p></div><div style="font:800 30px 'Syne',sans-serif">+$400</div></div>
+  <p class="note" style="font-size:14px;margin-top:16px">Bundles: get 3 or more automations, or add them to a new Meltpoint website, and save 15% on setup. Some apps charge their own small usage fees — we'll tell you upfront.</p>
+</section>
+
+<section class="sec wrap" aria-labelledby="fh">
+  <p class="eyebrow">Questions</p>
+  <h2 id="fh">Good to <em>know.</em></h2>
+  <div class="faq">
+    <details><summary>Do I need any technical knowledge?</summary><p>No. We set everything up and look after it. You just keep using your email, WhatsApp and phone like normal.</p></details>
+    <details><summary>Will it work with the apps I already use?</summary><p>Almost always. We connect to common email, calendar, spreadsheet, messaging, shop and payment tools. If something can't connect, we'll tell you before you pay.</p></details>
+    <details><summary>Is my customer data safe?</summary><p>Your automations run on your own accounts, and you stay the owner of all your data. We only get the access needed to set things up, and you can remove it any time.</p></details>
+    <details><summary>What does the monthly fee cover?</summary><p>Running costs on our side, monitoring, fixing anything when an app changes, and small updates like new prices, hours or wording.</p></details>
+    <details><summary>Can you do it faster?</summary><p>Yes. Standard delivery is 5–7 days. Express delivery gets your automation live in 3–5 days for an extra $400.</p></details>
+    <details><summary>Can I cancel?</summary><p>Yes, monthly plans can be cancelled with 30 days' notice. Anything built on your accounts stays yours.</p></details>
+    <details><summary>WhatsApp and Instagram — anything special?</summary><p>Automated messaging needs a verified business account. We guide you through verification, which usually takes a few days, and only message people who contacted you or opted in.</p></details>
+  </div>
+</section>
+
+<section class="sec wrap" style="text-align:center">
+  <h2>Ready to <em>switch on?</em></h2>
+  <p class="lede" style="margin:0 auto">Tell us what eats your time. We'll show you which automations fix it — free, no obligation.</p>
+  <div class="cta" style="justify-content:center"><a class="btn hot" id="footBook" href="#">Book a free call</a><a class="btn" href="/">See our websites</a></div>
+</section>
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> Meltpoint Studio · <a href="mailto:dario@meltpointstudio.com">dario@meltpointstudio.com</a> · <a href="/">meltpointstudio.com</a> · @meltpointstudio</div></footer>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="mt">
+  <div class="sheet" id="sheet">
+    <div class="shead"><div><span class="tier" id="mtier"></span> <span class="tag" id="mcat"></span><h3 id="mt"></h3></div><button class="x" id="mx" aria-label="Close">✕</button></div>
+    <div class="demo"><h4>Live preview</h4><div id="mdemo"></div></div>
+    <div class="info"><h4>What it does</h4><p id="mdesc"></p><h4 style="margin-top:18px">What you get</h4><ul id="mget"></ul><div class="kv" id="mkv"></div><a class="btn hot" id="mbuy" href="#" style="width:100%;justify-content:center">Get this automation</a><p class="note">Preview uses sample data. Your version uses your real details, prices and branding.</p></div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+var EMAIL='dario@meltpointstudio.com';
+var TIERS={s:{n:'Starter',set:'$350',mo:'$60/mo',days:'5–7 days'},g:{n:'Growth',set:'$750',mo:'$120/mo',days:'5–7 days'},p:{n:'Pro',set:'$1,500+',mo:'$220/mo',days:'5–7 days'}};
+var CATS=['All','Sales & leads','Customer service','Admin','Marketing','Restaurants','Salons & clinics','Real estate','Gyms & coaches','Shops','Hiring & staff','Money','Documents','Internal tools'];
+var ICONS={
+chat:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',
+wa:'<path d="M5 19l1.2-3.6A8 8 0 1 1 9 18.6z"/><path d="M9.5 9.5c.5 2 2 3.5 4 4l1-1 2 1c-.3 1.2-1.3 2-2.5 1.8C10.8 15 8.9 13 8.5 10.8c-.1-1.2.6-2.2 1.8-2.5l1 2z"/>',
+calc:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h2M12 18h4"/>',
+mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/>',
+doc:'<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/>',
+chart:'<path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/>',
+pen:'<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>',
+star:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>',
+table:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M10 4v16"/>',
+search:'<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>',
+inbox:'<path d="M4 13l2-8h12l2 8v6H4z"/><path d="M4 13h5l1 2h4l1-2h5"/>',
+video:'<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/>',
+food:'<path d="M7 3v8a2 2 0 0 0 4 0V3M9 11v10M16 3c-2 2-2 6 0 8v10"/>',
+cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h3"/>',
+home:'<path d="M3 11l9-7 9 7v9H3z"/><path d="M10 20v-6h4v6"/>',
+dumb:'<path d="M3 10v4M6 7v10M18 7v10M21 10v4M6 12h12"/>',
+cart:'<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M3 4h2l2.5 12h11L21 8H6.5"/>',
+box:'<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>',
+user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0 1 14 0M16 4.5a3.5 3.5 0 0 1 0 7M18 13.5a6 6 0 0 1 4 6.5"/>',
+money:'<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 9v.01M18 15v.01"/>',
+receipt:'<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/>',
+globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+list:'<path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6h.01M4 12h.01M4 18h.01"/>',
+gift:'<rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18M12 8v13M12 8c-2-4-6-4-6-1s6 1 6 1 6 2 6-1-4-3-6 1"/>',
+quiz:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17v.01"/>',
+brain:'<path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 6 1V5a2 2 0 0 0-3-1zM15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-6 1"/>',
+ig:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/>',
+check:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 9l2 2 4-4M8 15h8"/>',
+clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'
+};
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function $(id){return document.getElementById(id)}
+function h(tag,attrs,html){var e=document.createElement(tag);if(attrs)for(var k in attrs)e.setAttribute(k,attrs[k]);if(html!=null)e.innerHTML=html;return e}
+var timers=[];function later(fn,ms){var t=setTimeout(fn,ms);timers.push(t);return t}
+function clearTimers(){timers.forEach(clearTimeout);timers=[]}
+function money(n){n=Number(n);var dec=Math.round(n*100)%100!==0;return '$'+n.toLocaleString('en-US',{minimumFractionDigits:dec?2:0,maximumFractionDigits:2})}
+function fill(s,v){return String(s).replace(/\{(\w+)\}/g,function(_,k){return v[k]!=null&&v[k]!==''?v[k]:'{'+k+'}'})}
+function mailto(subject,body){return 'mailto:'+EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body)}
+
+/* ---------- DEMO ENGINES ---------- */
+var E={};
+
+/* chat: cfg {theme,name,sub,greet,quick,rules:[{k:[],a,lead,q}],fallback,leadAsk,leadDone,notify} */
+E.chat=function(root,c){
+  var wrap=h('div',{'class':'phone '+(c.theme||'')});
+  wrap.innerHTML='<div class="ph"><i>'+esc(c.av||'MS')+'</i><div>'+esc(c.name)+'<small>'+esc(c.sub||'Online · replies instantly')+'</small></div></div><div class="msgs" aria-live="polite"></div><div class="qr"></div><form class="inrow"><label class="sr">Message</label><input placeholder="Type a message…" aria-label="Type a message"><button type="submit">Send</button></form>';
+  root.appendChild(wrap);
+  var msgs=wrap.querySelector('.msgs'),qr=wrap.querySelector('.qr'),form=wrap.querySelector('form'),inp=form.querySelector('input');
+  var state={step:null,data:{}};
+  function add(t,who){var m=h('div',{'class':'m '+who});m.textContent=t;msgs.appendChild(m);msgs.scrollTop=msgs.scrollHeight;return m}
+  function bot(t,cb,delay){var ty=h('div',{'class':'typing'},'typing…');msgs.appendChild(ty);msgs.scrollTop=msgs.scrollHeight;later(function(){ty.remove();add(t,'b');if(cb)cb()},delay||750)}
+  function quick(list){qr.innerHTML='';(list||[]).forEach(function(q){var b=h('button',{type:'button'});b.textContent=q;b.onclick=function(){send(q)};qr.appendChild(b)})}
+  function send(t){t=String(t).trim();if(!t)return;add(t,'u');inp.value='';quick([]);respond(t)}
+  function respond(t){
+    var low=t.toLowerCase();
+    if(state.step){var st=state.step;state.data[st.key]=t;var nx=c.lead[c.lead.indexOf(st)+1];
+      if(nx){state.step=nx;bot(fill(nx.ask,state.data))}
+      else{state.step=null;bot(fill(c.leadDone,state.data),function(){later(function(){add(fill(c.notify,state.data),'sys')},600);quick(c.quick)})}
+      return}
+    var r=null;(c.rules||[]).some(function(x){if(x.k.some(function(k){return low.indexOf(k)>-1})){r=x;return true}});
+    if(r){bot(r.a,function(){if(r.lead&&c.lead){state.step=c.lead[0];bot(c.lead[0].ask)}else quick(r.q||c.quick)});}
+    else bot(c.fallback,function(){quick(c.quick)});
+  }
+  form.onsubmit=function(e){e.preventDefault();send(inp.value)};
+  if(c.pre)c.pre.forEach(function(p){add(p[1],p[0])});
+  bot(c.greet,function(){quick(c.quick)},500);
+};
+
+/* timeline: {fields:[{id,label,val}],steps:[{w,ch,m}],run:'label'} */
+E.timeline=function(root,c){
+  var f=h('div');(c.fields||[]).forEach(function(x){f.innerHTML+='<div class="fld"><label for="t_'+x.id+'">'+esc(x.label)+'</label><input id="t_'+x.id+'" value="'+esc(x.val)+'"></div>'});
+  root.appendChild(f);
+  if(c.intro)root.appendChild(h('p',{'class':'note',style:'margin:0 0 8px'},esc(c.intro)));
+  var btn=h('button',{'class':'btn hot sm',type:'button'},'▶ '+esc(c.run||'Run it'));root.appendChild(btn);
+  var tl=h('div',{'class':'tl'});root.appendChild(tl);
+  function draw(v){tl.innerHTML='';c.steps.forEach(function(s){var d=h('div',{'class':'tli'});d.innerHTML='<div class="when">'+esc(s.w)+'</div><div class="bub"><span class="ch">'+esc(s.ch)+'</span>'+esc(fill(s.m,v))+'</div>';tl.appendChild(d)})}
+  function vals(){var v={};(c.fields||[]).forEach(function(x){v[x.id]=$('t_'+x.id).value});return v}
+  draw(vals());
+  f.addEventListener('input',function(){draw(vals())});
+  btn.onclick=function(){clearTimers();draw(vals());var items=tl.children;for(var i=0;i<items.length;i++)(function(i){later(function(){items[i].classList.add('on','done');items[i].scrollIntoView({block:'nearest',behavior:'smooth'})},400+i*900)})(i);
+    if(c.end)later(function(){var e=h('div',{'class':'alert g'},'✓ '+esc(fill(c.end,vals())));tl.appendChild(e)},400+items.length*900)};
+};
+
+/* form -> output: {fields:[{id,label,type,val,opts,half}],btn,render(v)} */
+E.form=function(root,c){
+  var f=h('form');var html='',row=[];
+  function fh(x){var id='f_'+x.id,inner;
+    if(x.type==='select')inner='<select id="'+id+'">'+x.opts.map(function(o){return '<option'+(o===x.val?' selected':'')+'>'+esc(o)+'</option>'}).join('')+'</select>';
+    else if(x.type==='area')inner='<textarea id="'+id+'">'+esc(x.val)+'</textarea>';
+    else inner='<input id="'+id+'" type="'+(x.type||'text')+'" value="'+esc(x.val)+'"'+(x.type==='number'?' inputmode="decimal" step="any"':'')+'>';
+    return '<div class="fld"><label for="'+id+'">'+esc(x.label)+'</label>'+inner+'</div>'}
+  c.fields.forEach(function(x){if(x.half){row.push(fh(x));if(row.length===2){html+='<div class="frow">'+row.join('')+'</div>';row=[]}}else{if(row.length){html+='<div class="frow">'+row.join('')+'</div>';row=[]}html+=fh(x)}});
+  if(row.length)html+='<div class="frow">'+row.join('')+'</div>';
+  html+='<button class="btn hot sm" type="submit">'+esc(c.btn||'Generate')+'</button>';
+  f.innerHTML=html;root.appendChild(f);var out=h('div',{'class':'out'});root.appendChild(out);
+  function vals(){var v={};c.fields.forEach(function(x){var el=$('f_'+x.id);v[x.id]=x.type==='number'?parseFloat(el.value)||0:el.value.trim()});return v}
+  function go(){out.innerHTML=c.render(vals())}
+  f.onsubmit=function(e){e.preventDefault();out.innerHTML='<p class="note">Working…</p>';later(go,450)};
+  if(c.live){f.addEventListener('input',go);go()}
+};
+
+/* feed table: {cols,rows,btn,intro,source(i)?} rows appended one by one */
+E.feed=function(root,c){
+  if(c.intro)root.appendChild(h('p',{'class':'note',style:'margin:0 0 10px'},esc(c.intro)));
+  if(c.source){var s=h('div',{'class':'mail',style:'margin-bottom:10px'});root.appendChild(s)}
+  var btn=h('button',{'class':'btn hot sm',type:'button',style:'margin-bottom:10px'},'▶ '+esc(c.btn||'Run'));root.appendChild(btn);
+  var ts=h('div',{'class':'tscroll'});var t=h('table',{'class':'sheetx'});t.innerHTML='<thead><tr>'+c.cols.map(function(x){return '<th>'+esc(x)+'</th>'}).join('')+'</tr></thead><tbody></tbody>';ts.appendChild(t);root.appendChild(ts);
+  var tb=t.querySelector('tbody');var foot=h('div',{'class':'alerts',style:'margin-top:10px'});root.appendChild(foot);
+  function reset(){tb.innerHTML='';foot.innerHTML='';if(c.source)s.innerHTML=''}
+  btn.onclick=function(){clearTimers();reset();c.rows.forEach(function(r,i){later(function(){
+      if(c.source){var m=h('div',{'class':'mi'},c.source[i]);s.appendChild(m)}
+      later(function(){var tr=h('tr',{'class':'new'});tr.innerHTML=r.map(function(x){return '<td>'+x+'</td>'}).join('');tb.appendChild(tr)},c.source?500:0)
+    },i*(c.source?1100:650))});
+    if(c.end)later(function(){foot.innerHTML='<div class="alert g">'+c.end+'</div>'},c.rows.length*(c.source?1100:650)+600)};
+};
+
+/* dashboard: {ranges:{label:{m:[[l,v,d]],b:[[l,v]],a:[[cls,txt]]}}} */
+E.dash=function(root,c){
+  var keys=Object.keys(c.ranges);var seg=h('div',{'class':'seg',role:'group'});keys.forEach(function(k,i){var b=h('button',{type:'button','aria-pressed':i?'false':'true'},esc(k));b.onclick=function(){[].forEach.call(seg.children,function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');draw(k)};seg.appendChild(b)});
+  if(keys.length>1)root.appendChild(seg);
+  var body=h('div');root.appendChild(body);
+  function draw(k){var d=c.ranges[k];var mx=Math.max.apply(null,d.b.map(function(x){return x[1]}));
+    body.innerHTML='<div class="mets">'+d.m.map(function(m){return '<div class="met"><span>'+esc(m[0])+'</span><b>'+esc(m[1])+'</b>'+(m[2]?'<em class="'+(m[2][0]==='-'?'dn':'up')+'">'+esc(m[2])+'</em>':'')+'</div>'}).join('')+'</div>'+
+    (d.b.length?'<div class="bars">'+d.b.map(function(b){return '<div style="height:4px" data-h="'+Math.round(b[1]/mx*100)+'"><span>'+esc(b[0])+'</span></div>'}).join('')+'</div>':'')+
+    '<div class="alerts">'+(d.a||[]).map(function(a){return '<div class="alert '+a[0]+'">'+a[1]+'</div>'}).join('')+'</div>';
+    requestAnimationFrame(function(){requestAnimationFrame(function(){[].forEach.call(body.querySelectorAll('.bars div'),function(x){x.style.height=Math.max(4,x.getAttribute('data-h'))+'%'})})})}
+  draw(keys[0]);
+};
+
+/* kanban: {cols:[name], cards:[[col,title,sub]], add:{title,sub}} */
+E.kan=function(root,c){
+  root.appendChild(h('p',{'class':'note',style:'margin:0 0 10px'},esc(c.intro||'Tap a card to move it to the next stage.')));
+  if(c.add){var b=h('button',{'class':'btn hot sm',type:'button',style:'margin-bottom:10px'},'+ '+esc(c.add.btn));root.appendChild(b)}
+  var k=h('div',{'class':'kan'});c.cols.forEach(function(n,i){k.innerHTML+='<div class="col" data-i="'+i+'"><h6>'+esc(n)+'</h6></div>'});root.appendChild(k);
+  var log=h('div',{'class':'alerts'});root.appendChild(log);
+  function card(ci,t,s){var d=h('div',{'class':'kc',tabindex:'0',role:'button'},esc(t)+'<small>'+esc(s)+'</small>');d.onclick=function(){var cur=+d.parentNode.getAttribute('data-i');if(cur<c.cols.length-1){k.children[cur+1].appendChild(d);var msg=c.onMove?c.onMove(t,c.cols[cur+1]):'Moved to '+c.cols[cur+1];log.innerHTML='<div class="alert g">✓ '+esc(msg)+'</div>'}};d.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();d.click()}};k.children[ci].appendChild(d)}
+  c.cards.forEach(function(x){card(x[0],x[1],x[2])});
+  if(c.add){var n=0;b.onclick=function(){var a=c.add.items[n%c.add.items.length];n++;card(0,a[0],a[1]);log.innerHTML='<div class="alert g">✓ '+esc(c.add.msg)+'</div>'}}
+};
+
+/* inbox sort */
+E.inbox=function(root,c){
+  var btn=h('button',{'class':'btn hot sm',type:'button',style:'margin-bottom:10px'},'▶ Sort my inbox');root.appendChild(btn);
+  var l=h('div',{'class':'mail'});root.appendChild(l);
+  function draw(sorted){l.innerHTML=c.mails.map(function(m){return '<div class="mi"><b>'+esc(m[0])+'</b><span class="note" style="margin:0">'+esc(m[1])+'</span>'+(sorted?'<span class="lb '+m[2]+'">'+esc(m[3])+'</span>'+(m[4]?'<div class="dr">Draft reply: '+esc(m[4])+'</div>':''):'')+'</div>'}).join('')}
+  draw(false);btn.onclick=function(){l.innerHTML='<p class="note">Reading 6 emails…</p>';later(function(){draw(true);l.insertAdjacentHTML('beforeend','<div class="alert g">✓ 6 sorted · 1 urgent flagged · 3 replies drafted for you to approve</div>')},900)};
+};
+
+/* quiz */
+E.quiz=function(root,c){
+  var i=0,score={},box=h('div',{'class':'qz'});root.appendChild(box);
+  function draw(){if(i>=c.qs.length)return done();var q=c.qs[i];box.innerHTML='<div class="prog"><div style="width:'+(i/c.qs.length*100)+'%"></div></div><p style="font-weight:500;margin-bottom:10px">'+esc(q[0])+'</p>';q[1].forEach(function(o){var b=h('button',{'class':'opt',type:'button'},esc(o[0]));b.onclick=function(){score[o[1]]=(score[o[1]]||0)+1;i++;draw()};box.appendChild(b)})}
+  function done(){var best=Object.keys(score).sort(function(a,b){return score[b]-score[a]})[0];var r=c.res[best];box.innerHTML='<div class="prog"><div style="width:100%"></div></div><p class="eyebrow" style="margin-bottom:8px">Your result</p><h3 style="font-size:22px;margin-bottom:6px">'+esc(r[0])+'</h3><p style="color:var(--mute);font-size:14px;margin-bottom:12px">'+esc(r[1])+'</p><form class="inrow" style="border:1px solid var(--line);border-radius:99px;padding:6px"><input type="email" placeholder="you@email.com" aria-label="Email" required><button type="submit">Send my guide</button></form>';
+    box.querySelector('form').onsubmit=function(e){e.preventDefault();var em=this.querySelector('input').value;box.insertAdjacentHTML('beforeend','<div class="alert g" style="margin-top:10px">✓ Guide emailed to '+esc(em)+' · added to your mailing list as "'+esc(r[0])+'" · 3-email welcome series scheduled</div>');this.remove()}}
+  draw();
+};
+
+/* booking slots */
+E.book=function(root,c){
+  var sel=null;var html='<div class="fld"><label for="bk_s">'+esc(c.what)+'</label><select id="bk_s">'+c.opts.map(function(o){return '<option>'+esc(o)+'</option>'}).join('')+'</select></div><div class="seg" id="bk_d" role="group">'+c.days.map(function(d,i){return '<button type="button" aria-pressed="'+(i?'false':'true')+'">'+esc(d)+'</button>'}).join('')+'</div><div class="slots" id="bk_t"></div><div class="frow"><div class="fld"><label for="bk_n">Name</label><input id="bk_n" value="Sara"></div><div class="fld"><label for="bk_p">Phone</label><input id="bk_p" value="+1 555 0142" inputmode="tel"></div></div><button class="btn hot sm" type="button" id="bk_go">'+esc(c.btn||'Book')+'</button><div class="out" id="bk_o"></div>';
+  root.innerHTML=html;var day=0;
+  function slots(){var t=$('bk_t');t.innerHTML='';c.times.forEach(function(tm,j){var b=h('button',{type:'button','aria-pressed':'false'},esc(tm));if((j+day*2)%4===1)b.disabled=true;b.onclick=function(){[].forEach.call(t.children,function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');sel=tm};t.appendChild(b)});sel=null}
+  [].forEach.call($('bk_d').children,function(b,i){b.onclick=function(){[].forEach.call($('bk_d').children,function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');day=i;slots()}});
+  slots();
+  $('bk_go').onclick=function(){var o=$('bk_o');if(!sel){o.innerHTML='<p class="note" style="color:#ff9aa8">Pick a time first.</p>';return}
+    var v={s:$('bk_s').value,d:c.days[day],t:sel,n:$('bk_n').value||'there',p:$('bk_p').value};
+    o.innerHTML='<div class="alerts" style="margin-top:0">'+c.after.map(function(a,i){return '<div class="alert g" style="opacity:0;transition:opacity .4s" data-i="'+i+'">'+esc(fill(a,v))+'</div>'}).join('')+'</div>';
+    [].forEach.call(o.querySelectorAll('.alert'),function(a,i){later(function(){a.style.opacity=1},250+i*600)})};
+};
+
+/* ---------- AUTOMATIONS ---------- */
+var A=[
+/* SALES & LEADS */
+{id:'lead-chatbot',c:'Sales & leads',t:'g',i:'chat',n:'Website lead chatbot',d:'A chat assistant on your website that answers questions about your prices, hours and services, then collects the visitor\'s name and phone and sends the lead straight to you.',g:['Chat bubble on your website, in your brand colours','Trained on your services, prices and FAQs','Captures name, phone and what they need','Every lead emailed or WhatsApped to you instantly','Monthly leads report'],
+ demo:['chat',{name:'Glow Studio — assistant',av:'GS',greet:'Hi! 👋 I can help with prices, opening hours or booking. What do you need?',quick:['How much is a facial?','Are you open Saturday?','I want to book'],
+  rules:[{k:['price','much','cost','facial'],a:'Our signature facial is $65 (60 min). The express version is $40 (30 min). Want me to get you booked in?',q:['Yes, book me','Are you open Saturday?']},{k:['open','hour','saturday','sunday','time'],a:'We\'re open Mon–Fri 9am–7pm and Saturday 10am–4pm. Closed Sundays.',q:['I want to book','How much is a facial?']},{k:['book','yes','appointment'],a:'Great! I just need a couple of details.',lead:true},{k:['where','address','location'],a:'We\'re at 24 Market Street, next to the pharmacy. Free parking behind the building.'}],
+  fallback:'Good question — I\'ll pass it to the team. Meanwhile I can help with prices, hours or booking.',
+  lead:[{key:'name',ask:'What\'s your name?'},{key:'phone',ask:'Thanks {name}! What\'s the best phone number to reach you?'}],leadDone:'Perfect, {name}. The team will call you on {phone} within the hour to confirm a time. 🙌',notify:'📩 New lead sent to owner: {name} · {phone} · wants a booking'}]},
+{id:'quote-calc',c:'Sales & leads',t:'g',i:'calc',n:'Instant quote calculator',d:'Visitors pick what they need and get an exact price on the spot, with a payment or booking link. You get every quote request with their details.',g:['Calculator on your website with your real prices','Options, extras and discounts built in','Customer gets the quote by email as a PDF','Optional deposit payment link','Every quote request sent to you'],
+ demo:['form',{live:true,fields:[{id:'svc',label:'Service',type:'select',opts:['Deep clean','Regular clean','End of tenancy'],val:'Deep clean'},{id:'rooms',label:'Bedrooms',type:'number',val:3,half:true},{id:'baths',label:'Bathrooms',type:'number',val:2,half:true},{id:'ext',label:'Extras',type:'select',opts:['None','Oven clean (+$40)','Windows (+$55)','Oven + windows (+$85)'],val:'Oven clean (+$40)'},{id:'freq',label:'How often',type:'select',opts:['One-off','Every 2 weeks (−10%)','Weekly (−15%)'],val:'One-off'}],btn:'Email me this quote',
+  render:function(v){var base={'Deep clean':90,'Regular clean':55,'End of tenancy':140}[v.svc];var tot=base+Math.max(0,v.rooms)*25+Math.max(0,v.baths)*20;var ex={'None':0,'Oven clean (+$40)':40,'Windows (+$55)':55,'Oven + windows (+$85)':85}[v.ext];tot+=ex;var disc=v.freq.indexOf('10%')>-1?.1:v.freq.indexOf('15%')>-1?.15:0;var fin=Math.round(tot*(1-disc));return '<div class="doc"><h5>Your quote</h5><p class="muted">Sparkle Cleaning Co.</p><table><tr><td>'+esc(v.svc)+' · '+v.rooms+' bed / '+v.baths+' bath</td><td style="text-align:right">'+money(tot-ex)+'</td></tr><tr><td>'+esc(v.ext)+'</td><td style="text-align:right">'+money(ex)+'</td></tr>'+(disc?'<tr><td>Regular discount</td><td style="text-align:right">−'+money(Math.round(tot*disc))+'</td></tr>':'')+'</table><div class="tot">'+money(fin)+'</div><span class="paybtn">Book &amp; pay 20% deposit ('+money(Math.round(fin*.2))+')</span></div>'}}]},
+{id:'email-followups',c:'Sales & leads',t:'g',i:'mail',n:'Lead follow-up sequence',d:'Every new enquiry gets an instant reply, then friendly follow-ups on day 2 and day 5 until they book. Stops automatically when they reply.',g:['Instant personal reply to every enquiry','2 follow-ups written in your voice','Stops the moment they reply or book','You see who opened and clicked','Works with your website form, email and ads'],
+ demo:['timeline',{fields:[{id:'name',label:'Lead name',val:'James'},{id:'need',label:'What they asked about',val:'a kitchen renovation'}],run:'Simulate a new enquiry',
+  steps:[{w:'0 min',ch:'Email · instant',m:'Hi {name}, thanks for asking about {need}! I\'ve attached our price guide. When\'s a good time for a quick 10-minute call?'},{w:'Day 2',ch:'Email',m:'Hi {name}, just checking you got our guide for {need}. Here are 3 recent projects similar to yours → [photos]'},{w:'Day 5',ch:'WhatsApp',m:'Hi {name} 👋 We have 2 install slots left this month for {need}. Want me to hold one for you?'},{w:'Reply',ch:'Auto-stop',m:'{name} replied "Yes please!" → sequence stopped, you get a notification to call.'}],end:'Lead {name} marked "Hot" and moved to your Calls list'}]},
+{id:'lead-lists',c:'Sales & leads',t:'g',i:'search',n:'Lead lists & personal cold emails',d:'Builds lists of local businesses that fit your ideal customer from public info, then writes a personal first email for each one.',g:['Targeted list (e.g. dentists in your city)','Business name, website, public contact','Personal opening line for each lead','Ready to review and send from your email','Fresh list every month'],
+ demo:['form',{fields:[{id:'who',label:'Who do you want to reach?',val:'Dental clinics'},{id:'where',label:'Where?',val:'Austin, TX'},{id:'off',label:'What are you offering?',val:'a new website that gets more bookings'}],btn:'Build my list',
+  render:function(v){var L=[['Bright Smile '+v.who.replace(/s$/,''),'no online booking on their site'],['Lakeview Family '+v.who.replace(/s$/,''),'site isn\'t mobile-friendly'],['Oak Hill '+v.who.replace(/s$/,''),'great reviews but an outdated site']];return '<table class="sheetx"><thead><tr><th>Business</th><th>Opening line</th></tr></thead><tbody>'+L.map(function(l){return '<tr class="new"><td>'+esc(l[0])+'<br><span class="pill">'+esc(v.where)+'</span></td><td>Hi team at '+esc(l[0])+' — I noticed your '+esc(l[1])+'. We build '+esc(v.off)+'. Worth a quick chat?</td></tr>'}).join('')+'</tbody></table><div class="alert g" style="margin-top:10px">✓ 3 of 120 leads shown · emails ready for you to approve</div>'}}]},
+{id:'instant-replies',c:'Sales & leads',t:'s',i:'bell',n:'Missed-call text back',d:'When you miss a call, the caller instantly gets a text so they don\'t ring your competitor instead.',g:['Instant text after every missed call','Booking link or quick reply options','Caller details sent to you','Works on your business number'],
+ demo:['timeline',{fields:[{id:'biz',label:'Your business',val:'Ace Plumbing'}],run:'Miss a call',steps:[{w:'14:02',ch:'Missed call',m:'+1 555 0199 called — you were on a job.'},{w:'14:02',ch:'Text · instant',m:'Hi, sorry we missed you at {biz}! Reply with what you need, or book a time here → link'},{w:'14:05',ch:'Customer reply',m:'"Leaking pipe under the sink, can someone come today?"'},{w:'14:05',ch:'To you',m:'🔔 Urgent job: leaking pipe, wants today. Tap to call back.'}]}]},
+
+/* CUSTOMER SERVICE */
+{id:'whatsapp-replies',c:'Customer service',t:'p',i:'wa',n:'WhatsApp auto-replies',d:'Answers common WhatsApp questions instantly — prices, hours, location, availability — and hands over to you for anything else.',g:['Instant replies on your WhatsApp Business number','Menu buttons for common questions','Hands the chat to you when needed','Out-of-hours replies','Business verification guided by us'],
+ demo:['chat',{theme:'wa',name:'Bella Pizza',av:'BP',sub:'Business account',greet:'Hi! Welcome to Bella Pizza 🍕 How can we help?',quick:['Menu','Opening hours','Where are you?','Talk to a person'],rules:[{k:['menu','price'],a:'🍕 Margherita $12\n🍕 Pepperoni $14\n🍕 BBQ Chicken $15\n🥤 Drinks $2\nWant to order for pickup or delivery?',q:['Delivery','Opening hours']},{k:['hour','open','time'],a:'We\'re open every day 12pm–11pm. Kitchen closes at 10:30pm.'},{k:['where','location','address'],a:'📍 18 King Street, Downtown. Here\'s the map → link'},{k:['person','human','talk','staff'],a:'Sure! I\'ve let the team know — someone will reply here in a few minutes. 🙂'},{k:['deliver','order','pickup'],a:'Delivery is free over $25 within 5 km, about 35 minutes. Send your order and address and we\'ll confirm!'}],fallback:'Thanks! A team member will get back to you shortly. Meanwhile, tap an option below.'}]},
+{id:'ig-dm',c:'Customer service',t:'p',i:'ig',n:'Instagram DM auto-replies',d:'Replies to Instagram DMs instantly with prices, links and booking options, so no message sits unanswered.',g:['Instant answers to common DMs','Story replies and mentions handled','Booking or shop links sent automatically','Hands over to you for anything personal'],
+ demo:['chat',{theme:'ig',name:'nailsbylina',av:'NL',sub:'Active now',greet:'Hey love 💅 thanks for messaging! What can I help with?',quick:['Price list','Book a set','Do you do gel?'],rules:[{k:['price','list','much'],a:'💅 Gel manicure $35\n💅 BIAB $45\n💅 Full set extensions $60\nNail art from $5'},{k:['book','set','appointment'],a:'Yay! Here\'s my booking page with live availability → link ✨ Deposits are $10.'},{k:['gel','biab'],a:'Yes! Gel and BIAB are my most popular. Gel lasts 2–3 weeks 💖'}],fallback:'Thanks babe! I\'ll reply personally soon 💕'}]},
+{id:'booking-reminders',c:'Customer service',t:'s',i:'bell',n:'Booking reminders',d:'Automatic reminders before every appointment with one-tap confirm or reschedule. Cuts no-shows dramatically.',g:['Reminder 24 hours and 2 hours before','Confirm or reschedule in one tap','Your calendar updates automatically','Weekly no-show report'],
+ demo:['timeline',{fields:[{id:'name',label:'Client',val:'Maria'},{id:'when',label:'Appointment',val:'Thursday 3:00pm'}],run:'Run reminders',steps:[{w:'Booked',ch:'Email',m:'You\'re booked, {name}! {when}. Add to calendar → link'},{w:'24h before',ch:'WhatsApp',m:'Hi {name}, see you tomorrow, {when}! Reply 1 to confirm, 2 to reschedule.'},{w:'Reply',ch:'Customer',m:'"1" → confirmed ✓ calendar marked green'},{w:'2h before',ch:'Text',m:'See you at {when}, {name}! Parking is behind the building.'}],end:'{name} confirmed — no-show risk: low'}]},
+{id:'review-requests',c:'Customer service',t:'s',i:'star',n:'Review requests',d:'After each job, happy customers are asked for a review with a one-tap link. Unhappy ones are routed to you privately first so you can fix it.',g:['Sent automatically after each job','One-tap link to your review page','Unhappy feedback goes to you privately','Monthly review count report'],
+ demo:['timeline',{fields:[{id:'name',label:'Customer',val:'Tom'}],run:'Finish a job',steps:[{w:'Job done',ch:'Text',m:'Thanks {name}! How did we do today? Reply 1–5 ⭐'},{w:'Reply',ch:'Customer',m:'"5"'},{w:'+1 min',ch:'Text',m:'Amazing, thank you {name}! Would you share that in a quick review? It really helps us → review link'},{w:'If 1–3',ch:'To you',m:'(If they\'d scored low, you\'d get it privately to fix first.)'}],end:'Review link clicked by {name}'}]},
+{id:'order-status',c:'Shops',t:'s',i:'box',n:'Order status updates',d:'Customers get updates when their order is confirmed, shipped and delivered — fewer "where is my order?" messages.',g:['Confirmed, shipped, out for delivery, delivered','Tracking link included','By email, text or WhatsApp','Delay alerts sent to you'],
+ demo:['timeline',{fields:[{id:'name',label:'Customer',val:'Aisha'},{id:'item',label:'Order',val:'Linen dress (M)'}],run:'Ship the order',steps:[{w:'Mon 10:00',ch:'Email',m:'Thanks {name}! Your {item} is confirmed. Order #1042'},{w:'Tue 16:20',ch:'WhatsApp',m:'📦 Your {item} has shipped! Track it here → link'},{w:'Thu 08:40',ch:'Text',m:'🚚 Out for delivery today, {name}!'},{w:'Thu 13:05',ch:'Email',m:'Delivered ✓ Love it? Tag us @yourshop for 10% off next time.'}]}]},
+
+/* ADMIN */
+{id:'auto-invoices',c:'Admin',t:'g',i:'receipt',n:'Automatic invoices',d:'Invoices are created and emailed the moment a job is marked done, with a pay-now link. Paid invoices are logged in your spreadsheet.',g:['Branded invoice PDF with your logo','Emailed automatically with a pay link','Paid / unpaid tracked for you','Reminders for late payers (optional)'],
+ demo:['form',{fields:[{id:'cl',label:'Client',val:'Northside Café'},{id:'it',label:'Job',val:'Logo + menu design'},{id:'q',label:'Qty',type:'number',val:1,half:true},{id:'pr',label:'Price',type:'number',val:480,half:true},{id:'tax',label:'Tax %',type:'number',val:8,half:true},{id:'due',label:'Due in (days)',type:'number',val:14,half:true}],btn:'Mark job done → send invoice',
+  render:function(v){var sub=v.q*v.pr,tx=sub*v.tax/100;return '<div class="doc"><div style="display:flex;justify-content:space-between"><div><h5>INVOICE</h5><p class="muted">#INV-0387 · due in '+v.due+' days</p></div><div style="text-align:right"><b>Your Business</b><p class="muted">hello@yourbusiness.com</p></div></div><p style="margin-top:10px"><span class="muted">Bill to</span><br><b>'+esc(v.cl)+'</b></p><table><tr><th>Item</th><th>Qty</th><th style="text-align:right">Amount</th></tr><tr><td>'+esc(v.it)+'</td><td>'+v.q+'</td><td style="text-align:right">'+money(sub)+'</td></tr><tr><td>Tax '+v.tax+'%</td><td></td><td style="text-align:right">'+money(Math.round(tx*100)/100)+'</td></tr></table><div class="tot">'+money(Math.round((sub+tx)*100)/100)+'</div><span class="paybtn">Pay now</span></div><div class="alert g" style="margin-top:10px">✓ PDF emailed to '+esc(v.cl)+' · logged in Invoices sheet as "Unpaid"</div>'}}]},
+{id:'sheet-sync',c:'Admin',t:'s',i:'table',n:'Orders & bookings → spreadsheet',d:'Every new order, booking or form entry is copied into one tidy spreadsheet automatically. No more copy-pasting.',g:['Live spreadsheet you own','Orders, bookings and forms in one place','Totals and daily summary row','Works with your shop, booking and form tools'],
+ demo:['feed',{intro:'New orders arriving from your website and Instagram shop:',btn:'Receive orders',cols:['Time','Customer','Item','Total','From'],rows:[['09:14','R. Khan','Candle set','$42','Website'],['09:31','L. Moore','Gift box','$65','Instagram'],['10:02','D. Silva','Candle set ×2','$84','Website'],['10:20','P. Chen','Diffuser','$29','Website']],end:'✓ 4 orders logged · today\'s total $220 · stock updated'}]},
+{id:'daily-summary',c:'Admin',t:'s',i:'mail',n:'Daily / weekly business summary',d:'One short email every morning or Monday with your sales, new leads, bookings and anything that needs attention.',g:['Delivered to your inbox or WhatsApp','Sales, leads, bookings, unpaid invoices','Highlights what needs action today','Pulls from all your connected apps'],
+ demo:['dash',{ranges:{'Today':{m:[['Sales','$1,240','+12%'],['New leads','7','+3'],['Bookings','11',''],['Unpaid invoices','2','-1']],b:[['8a',2],['10a',5],['12p',9],['2p',7],['4p',6],['6p',3]],a:[['y','⚠ 2 invoices overdue — Northside Café ($518), Bloom Co ($240)'],['g','✓ Busiest hour: 12–1pm'],['r','! 1 lead waiting over 2 hours for a reply']]},'This week':{m:[['Sales','$8,930','+6%'],['New leads','41','+9'],['Bookings','63',''],['Reviews','5 ⭐','+5']],b:[['Mon',6],['Tue',7],['Wed',5],['Thu',9],['Fri',10],['Sat',8],['Sun',3]],a:[['g','✓ Best day: Friday ($1,980)'],['y','⚠ Wednesday had 3 no-shows']]}}}]},
+{id:'inbox-sort',c:'Admin',t:'g',i:'inbox',n:'Inbox sorting & reply drafts',d:'Your inbox is sorted into Urgent, Customers, Invoices and Newsletters, and replies to common emails are drafted for you to approve.',g:['Smart labels on every email','Urgent emails flagged to your phone','Reply drafts in your tone — you approve','Weekly unsubscribe clean-up list'],
+ demo:['inbox',{mails:[['Sarah (customer)','Can I move my booking to Friday?','g','Customer','Of course Sarah — Friday 2pm or 4pm are free. Which works?'],['Bank','Payment received: $1,200','b','Finance',''],['Landlord','URGENT: water leak in unit 4','r','Urgent','Thanks — on it. Plumber booked for 3pm today.'],['Supplier','Invoice #8812 attached','y','Invoices',''],['Newsletter','10 marketing tips for 2026','m','Newsletter',''],['New enquiry','Do you do weekend events?','g','Lead','Yes we do! Here\'s our events price list — what date are you planning?']]}]},
+
+/* MARKETING */
+{id:'content-maker',c:'Marketing',t:'g',i:'pen',n:'Social content maker',d:'A month of posts and captions written in your brand voice, ready to schedule — with hashtags and calls to action.',g:['30 posts a month in your voice','Captions, hashtags and post ideas','Scheduled to your accounts','Seasonal and offer posts included'],
+ demo:['form',{fields:[{id:'biz',label:'Business type',val:'Coffee shop'},{id:'off',label:'This month\'s offer',val:'2-for-1 lattes before 10am'},{id:'tone',label:'Tone',type:'select',opts:['Friendly','Premium','Funny','Bold'],val:'Friendly'}],btn:'Write my posts',
+  render:function(v){var b=v.biz.toLowerCase();var P={Friendly:['Good morning! ☀️ Start your day with our '+v.off+'. Bring a friend!','Behind the scenes at our '+b+' 👀 Meet the team who make your mornings better.','Your weekend plans? Ours: great '+b+' vibes. Pop in and say hi 👋','Tag someone who needs this today 💛'],Premium:['Crafted with care. '+v.off+'.','The details matter — every visit to our '+b+' is made to be remembered.','Slow mornings, done properly.','An invitation, not an ad. Visit us this week.'],Funny:['Monday called. We answered with '+v.off+' ☕','Our '+b+' has one rule: no bad days allowed.','Plot twist: you deserve a treat today.','Tag the friend who owes you a coffee 👀'],Bold:['STOP SCROLLING. '+v.off.toUpperCase()+'.','The best '+b+' in town. We said it.','This week only. Don\'t miss out.','Come hungry. Leave happy.']}[v.tone];return '<div class="posts">'+P.map(function(p,i){return '<div class="post"><b>DAY '+(i*7+1)+' · '+['Offer','Team','Lifestyle','Engagement'][i]+'</b>'+esc(p)+'<br><span class="pill" style="margin-top:6px">#'+b.replace(/\s/g,'')+' #localbusiness</span></div>'}).join('')+'</div><div class="alert g" style="margin-top:10px">✓ 4 of 30 posts shown · scheduled for 9am daily</div>'}}]},
+{id:'video-clips',c:'Marketing',t:'g',i:'video',n:'Long video → short clips',d:'Turns one long video (a podcast, talk or tour) into short vertical clips with captions and titles, ready for Reels, Shorts and TikTok.',g:['Best moments picked automatically','Vertical 9:16 with burned-in captions','Titles and captions written for each','8–15 clips per long video'],
+ demo:['feed',{intro:'From a 42-minute podcast episode:',btn:'Find the best clips',cols:['Clip','Start','Length','Hook'],rows:[['#1','03:12','0:38','"The one mistake every new owner makes…"'],['#2','11:47','0:52','"We doubled bookings with one change"'],['#3','19:05','0:29','"Stop discounting. Do this instead."'],['#4','33:40','0:45','"How we got our first 100 customers"']],end:'✓ 4 clips cut, captioned and ready to post'}]},
+{id:'cold-outreach',c:'Marketing',t:'g',i:'mail',n:'Cold outreach with follow-ups',d:'Personal outreach emails to your lead list, with polite follow-ups to anyone who doesn\'t reply. Replies land in your inbox.',g:['Personal first line for every contact','2–3 polite follow-ups','Stops when they reply','Sent gently from your domain to protect deliverability'],
+ demo:['timeline',{fields:[{id:'name',label:'Contact',val:'Daniel'},{id:'co',label:'Their company',val:'Peak Fitness'}],run:'Start outreach',steps:[{w:'Day 1',ch:'Email',m:'Hi {name}, loved {co}\'s new class schedule. We help gyms fill quiet hours with automated booking reminders — worth a quick look?'},{w:'Day 4',ch:'Follow-up',m:'Hi {name}, quick nudge — here\'s a 1-minute example of what we did for a gym like {co} → link'},{w:'Day 9',ch:'Follow-up',m:'Last note from me, {name}! Happy to send a free plan for {co} if useful.'},{w:'Day 9',ch:'Reply',m:'{name}: "Sure, send it over" → stopped · added to your Calls list'}]}]},
+{id:'competitor',c:'Marketing',t:'g',i:'chart',n:'Competitor tracking',d:'Keeps an eye on your competitors\' public prices, offers and posts, and sends you a weekly summary of what changed.',g:['Up to 5 competitors tracked','Price and offer changes flagged','Their top posts each week','Weekly summary with suggestions'],
+ demo:['dash',{ranges:{'This week':{m:[['Competitors tracked','4',''],['Price changes','2',''],['New offers','3',''],['Their top post','1.2k likes','']],b:[['You',62],['A',71],['B',55],['C',48],['D',66]],a:[['r','! Bloom Salon dropped haircut price $45 → $39'],['y','⚠ Glow Spa launched "Bring a friend, 20% off"'],['g','✓ Your average price is still mid-market (chart = avg price)']]}}}]},
+{id:'comment-dm',c:'Marketing',t:'p',i:'ig',n:'Instagram comment → DM',d:'When someone comments a keyword like "PRICE" on your post, they automatically get a DM with the info and a link — great for turning posts into leads.',g:['Keyword triggers on any post or reel','Instant DM with your link or price list','Public reply to the comment','Leads collected in a spreadsheet'],
+ demo:['chat',{theme:'ig',name:'yourbrand · DMs',av:'YB',sub:'Auto-reply on',pre:[['sys','Your reel: "Comment PRICE for our 2026 rates"']],greet:'Try it: type PRICE as if you commented on the reel 👇',quick:['PRICE','LINK','Love this!'],rules:[{k:['price'],a:'Hey! 👋 Thanks for commenting. Here are our 2026 rates → link\nWant a free 10-min consult? Reply YES 🙂',q:['YES']},{k:['link'],a:'Here you go! 🔗 Shop link → link'},{k:['yes'],a:'Amazing! Pick a time here → booking link. Talk soon!'}],fallback:'(No keyword — normal comments are left for you to reply personally.)'}]},
+{id:'winback',c:'Marketing',t:'s',i:'gift',n:'Birthday & win-back offers',d:'Customers get a birthday treat, and people who haven\'t visited in a while get a "we miss you" offer — automatically.',g:['Birthday messages with a personal offer','Win-back after 60/90 days away','Unique one-time codes','Tracks who came back'],
+ demo:['timeline',{fields:[{id:'name',label:'Customer',val:'Leo'},{id:'gift',label:'Birthday gift',val:'a free dessert'}],run:'Run this month',steps:[{w:'Birthday',ch:'WhatsApp',m:'Happy birthday {name}! 🎂 Enjoy {gift} on us this week. Code: BDAY-LEO'},{w:'60 days away',ch:'Email',m:'We miss you, {name}! Here\'s 15% off your next visit. Code: BACK15'},{w:'90 days away',ch:'Text',m:'{name}, last chance — your 15% code expires Sunday!'}],end:'{name} used BDAY-LEO → visit logged, $48 spent'}]},
+{id:'lead-magnet',c:'Marketing',t:'g',i:'quiz',n:'Quiz & lead magnet',d:'A fun quiz or free guide on your site that collects emails and sends people a personalised result — then a welcome email series.',g:['Quiz or free guide in your branding','Personal results for each visitor','Emails added to your list with tags','3-email welcome series'],
+ demo:['quiz',{qs:[['What\'s your skin like by midday?',[['Shiny all over','o'],['Tight and flaky','d'],['Shiny forehead, dry cheeks','c']]],['How does your skin react to new products?',[['Breakouts','o'],['Redness or stinging','d'],['Depends on the product','c']]],['Your main goal?',[['Less shine','o'],['More moisture','d'],['Balance','c']]]],res:{o:['Oily skin','Lightweight gel moisturiser + clay mask once a week. Your free routine guide is ready.'],d:['Dry skin','Rich cream + gentle cleanser, no foaming washes. Your free routine guide is ready.'],c:['Combination skin','Balance with a light lotion and spot-treat your T-zone. Your free routine guide is ready.']}}]},
+
+/* RESTAURANTS */
+{id:'wa-ordering',c:'Restaurants',t:'p',i:'food',n:'WhatsApp food ordering',d:'Customers order from your menu on WhatsApp, get a total and pickup/delivery time, and the order goes straight to your kitchen.',g:['Menu with buttons on WhatsApp','Order totals calculated automatically','Order sent to kitchen screen or printer','Payment link or pay on delivery'],
+ demo:['chat',{theme:'wa',name:'Spice House',av:'SH',greet:'Welcome to Spice House 🌶 Type what you\'d like, e.g. "2 biryani 1 naan".',quick:['2 biryani 1 naan','1 karahi','Menu'],rules:[{k:['menu'],a:'🍛 Chicken biryani $11\n🍲 Chicken karahi $14\n🫓 Naan $2\n🥭 Mango lassi $4',q:['2 biryani 1 naan','1 karahi']},{k:['biryani','karahi','naan','lassi'],a:'',lead:true}],fallback:'Sorry, I didn\'t catch that. Try "2 biryani 1 naan" or tap Menu.',
+  lead:[{key:'addr',ask:'Got it! 🧾 Pickup or delivery? If delivery, send your address.'}],leadDone:'✅ Order confirmed!\nDelivery to: {addr}\nReady in ~35 min. Total + delivery will show on your payment link → link',notify:'🍳 Kitchen screen: new order · delivery · {addr}'}]},
+{id:'table-booking',c:'Restaurants',t:'g',i:'cal',n:'Table bookings',d:'Guests book a table online in seconds. You get a full bookings list, they get confirmations and reminders.',g:['Booking page with live availability','Party size and special requests','Confirmation and reminder messages','Daily bookings list for staff'],
+ demo:['book',{what:'Party size',opts:['2 people','4 people','6 people','8+ (large group)'],days:['Fri','Sat','Sun'],times:['6:00pm','6:30pm','7:00pm','7:30pm','8:00pm','8:30pm'],btn:'Book table',after:['✓ Table for {s} on {d} at {t} booked for {n}','✓ Confirmation sent to {p}','✓ Added to tonight\'s staff list','⏰ Reminder scheduled for 3 hours before']}]},
+{id:'menu-posts',c:'Restaurants',t:'s',i:'pen',n:'Daily menu posts',d:'Today\'s specials are posted to Instagram, Facebook and WhatsApp Status every morning, written up nicely from a quick note.',g:['Send one quick note, it does the rest','Posted to your socials at a set time','Consistent, appetising captions','Weekly specials archive'],
+ demo:['form',{fields:[{id:'sp',label:'Today\'s specials (quick note)',type:'area',val:'lamb chops 18, mushroom risotto 14, mango cheesecake 6'}],btn:'Write today\'s post',
+  render:function(v){var items=v.sp.split(',').map(function(s){s=s.trim();var m=s.match(/^(.*?)\s*\$?(\d+(\.\d+)?)$/);return m?[m[1],m[2]]:[s,'']}).filter(function(x){return x[0]});return '<div class="post" style="max-width:340px"><b>INSTAGRAM · FACEBOOK · STATUS · 11:00</b>✨ Today\'s specials ✨<br><br>'+items.map(function(x){return '• '+esc(x[0].charAt(0).toUpperCase()+x[0].slice(1))+(x[1]?' — $'+esc(x[1]):'')}).join('<br>')+'<br><br>Only while they last 👨‍🍳 Book or order on WhatsApp → link<br><span class="pill" style="margin-top:6px">#todaysspecial #foodie</span></div>'}}]},
+
+/* SALONS & CLINICS */
+{id:'waitlist',c:'Salons & clinics',t:'g',i:'clock',n:'Waitlist & "slot opened" alerts',d:'When someone cancels, people on your waitlist are offered the slot one by one until it\'s filled — no phone calls needed.',g:['Online waitlist on your site','Cancelled slots offered automatically','First to accept gets it','Your calendar updates itself'],
+ demo:['timeline',{fields:[{id:'slot',label:'Cancelled slot',val:'Today 4:00pm'}],run:'A client cancels',steps:[{w:'13:10',ch:'Cancellation',m:'Emma cancelled {slot}.'},{w:'13:10',ch:'Text → Waitlist #1',m:'Hi Priya, a spot opened: {slot}! Reply YES within 15 min to grab it.'},{w:'13:25',ch:'No reply',m:'Priya didn\'t reply → offered to #2'},{w:'13:26',ch:'Text → Waitlist #2',m:'Hi Kate, a spot opened: {slot}! Reply YES to grab it.'},{w:'13:28',ch:'Kate',m:'"YES!" → booked ✓ calendar updated'}],end:'Slot {slot} refilled in 18 minutes'}]},
+{id:'rebooking',c:'Salons & clinics',t:'s',i:'cal',n:'Rebooking reminders',d:'Clients are nudged to rebook at the right time — e.g. 5 weeks after a haircut or 6 months after a check-up.',g:['Timing set per service','Personal message with booking link','Stops once they\'ve rebooked','Monthly rebooking rate report'],
+ demo:['timeline',{fields:[{id:'name',label:'Client',val:'Nadia'},{id:'svc',label:'Last service',val:'colour & cut'}],run:'Fast-forward 5 weeks',steps:[{w:'Visit',ch:'Done',m:'{name} had a {svc}.'},{w:'+5 weeks',ch:'WhatsApp',m:'Hi {name}! It\'s been 5 weeks since your {svc} — time for a refresh? Book here → link'},{w:'+6 weeks',ch:'Text',m:'{name}, Saturday 11am is free with your usual stylist. Want it?'},{w:'Reply',ch:'Booked',m:'Rebooked ✓ reminders stop automatically'}]}]},
+{id:'patient-forms',c:'Salons & clinics',t:'g',i:'check',n:'Intake forms before visits',d:'New clients fill in their details and consent form online before they arrive. The answers are saved to their file.',g:['Mobile-friendly intake and consent form','Sent automatically after booking','Answers saved to their record','Flags allergies or important notes'],
+ demo:['form',{fields:[{id:'n',label:'Full name',val:'Omar Haddad'},{id:'dob',label:'Date of birth',type:'date',val:'1992-04-18',half:true},{id:'ph',label:'Phone',val:'+1 555 0177',half:true},{id:'al',label:'Allergies',val:'Latex'},{id:'ok',label:'Consent',type:'select',opts:['I agree to the treatment terms','I do not agree'],val:'I agree to the treatment terms'}],btn:'Submit form',
+  render:function(v){return '<div class="alerts" style="margin-top:0"><div class="alert g">✓ Saved to client file: '+esc(v.n)+'</div>'+(v.al?'<div class="alert r">⚠ Allergy flagged on their booking: '+esc(v.al)+'</div>':'')+'<div class="alert '+(v.ok.indexOf('not')>-1?'y':'g')+'">'+(v.ok.indexOf('not')>-1?'⚠ Consent missing — front desk notified':'✓ Consent signed and stored')+'</div></div>'}}]},
+
+/* REAL ESTATE */
+{id:'listing-page',c:'Real estate',t:'g',i:'home',n:'Property listing pages',d:'Enter the property details and get a polished listing write-up and page, ready to share on WhatsApp, social and portals.',g:['Listing description written for you','Shareable property page','Social post and WhatsApp message versions','Enquiry button that captures leads'],
+ demo:['form',{fields:[{id:'t',label:'Property',val:'3-bed apartment, Marina'},{id:'p',label:'Price',type:'number',val:420000,half:true},{id:'s',label:'Size (sq ft)',type:'number',val:1450,half:true},{id:'f',label:'Features',val:'sea view, balcony, gym, 2 parking'}],btn:'Create listing',
+  render:function(v){var f=v.f.split(',').map(function(x){return x.trim()}).filter(Boolean);return '<div class="doc"><p class="muted">FOR SALE</p><h5>'+esc(v.t)+'</h5><div class="tot" style="text-align:left;margin:4px 0">'+money(v.p)+'</div><p class="muted">'+v.s.toLocaleString()+' sq ft · '+money(Math.round(v.p/Math.max(1,v.s)))+'/sq ft</p><p style="margin-top:10px">Bright and spacious '+esc(v.t.toLowerCase())+' with '+esc(f.slice(0,2).join(' and '))+'. Move-in ready and perfect for families or investors.</p><p style="margin-top:8px">'+f.map(function(x){return '✓ '+esc(x)}).join(' &nbsp; ')+'</p><span class="paybtn">Book a viewing</span></div>'}}]},
+{id:'property-enquiry',c:'Real estate',t:'g',i:'chat',n:'Instant property enquiry replies',d:'Every portal or website enquiry gets an instant reply with details and viewing times, and serious buyers are flagged for you.',g:['Replies in under a minute, 24/7','Asks budget, timeline and mortgage status','Books viewings into your calendar','Hot buyers flagged to you'],
+ demo:['chat',{name:'Prime Homes',av:'PH',greet:'Thanks for your enquiry about the 3-bed in Marina! 🏡 Would you like the brochure or to book a viewing?',quick:['Send brochure','Book a viewing','Is it still available?'],rules:[{k:['brochure','details'],a:'Here\'s the brochure with floor plans → link. Is this for you to live in or as an investment?',q:['To live in','Investment']},{k:['available'],a:'Yes, it\'s available — 3 viewings booked this week, so it may go fast.',q:['Book a viewing']},{k:['live','invest'],a:'Got it, thanks! That helps us match you with the right homes too.',q:['Book a viewing']},{k:['view','book'],a:'Lovely! A couple of quick questions.',lead:true}],fallback:'Thanks! An agent will reply shortly.',lead:[{key:'budget',ask:'What\'s your budget range?'},{key:'when',ask:'And when are you hoping to move?'}],leadDone:'Perfect. Viewings are available Thu 5pm or Sat 11am — an agent will confirm with you now.',notify:'🔥 Hot buyer flagged to agent · budget {budget} · moving {when}'}]},
+
+/* GYMS & COACHES */
+{id:'class-signup',c:'Gyms & coaches',t:'g',i:'dumb',n:'Class sign-ups',d:'Members book classes online with live spaces left. Full classes get a waitlist, and reminders go out automatically.',g:['Class timetable with live spaces','Booking, cancelling and waitlists','Reminders before class','Attendance report'],
+ demo:['book',{what:'Class',opts:['HIIT (8 spaces left)','Yoga (3 spaces left)','Spin (1 space left)','Boxing (full — join waitlist)'],days:['Mon','Tue','Wed'],times:['6:00am','7:00am','12:15pm','5:30pm','6:30pm','7:30pm'],btn:'Book class',after:['✓ {n} booked into {s} — {d} {t}','✓ Confirmation sent to {p}','⏰ Reminder scheduled 2 hours before','✓ Class list updated for the coach']}]},
+{id:'member-payments',c:'Gyms & coaches',t:'s',i:'money',n:'Membership payment reminders',d:'Members get a friendly reminder before renewal and a polite nudge if a payment fails — no awkward conversations at the front desk.',g:['Renewal reminders 3 days before','Failed-payment follow-ups with a pay link','Freezes flagged to you','Monthly membership report'],
+ demo:['timeline',{fields:[{id:'name',label:'Member',val:'Chris'},{id:'amt',label:'Monthly fee',val:'$49'}],run:'Run renewal',steps:[{w:'3 days before',ch:'Email',m:'Hi {name}, your membership renews on the 1st ({amt}). Nothing to do!'},{w:'1st',ch:'Payment',m:'Card declined ✗'},{w:'1st',ch:'Text',m:'Hi {name}, your {amt} payment didn\'t go through. Update your card here → link'},{w:'3rd',ch:'Paid',m:'{name} updated card → {amt} paid ✓'}]}]},
+{id:'checkins',c:'Gyms & coaches',t:'s',i:'check',n:'Client progress check-ins',d:'Weekly check-in messages ask clients about progress, weight or habits. Answers go into a tracker so you can coach better.',g:['Weekly check-in message','Answers saved to each client\'s tracker','Progress chart per client','Alerts when someone goes quiet'],
+ demo:['feed',{intro:'Sunday 6pm check-ins coming in:',btn:'Collect check-ins',cols:['Client','Weight','Workouts','Mood'],rows:[['Ali','82.1 kg <span class="up">−0.6</span>','4/4','😀'],['Jess','64.8 kg <span class="up">−0.3</span>','3/4','🙂'],['Marco','—','0/4','—']],end:'⚠ Marco hasn\'t replied in 2 weeks — you\'ve been asked to check in personally'}]},
+
+/* SHOPS */
+{id:'low-stock',c:'Shops',t:'s',i:'box',n:'Low-stock alerts',d:'Get warned before you run out of best-sellers, with a suggested reorder amount based on how fast they sell.',g:['Alerts by email or WhatsApp','Reorder amount suggested','Weekly stock report','Works with your shop or spreadsheet'],
+ demo:['dash',{ranges:{'Stock':{m:[['Products','128',''],['Low stock','3',''],['Out of stock','1',''],['Days of stock left','~19','']],b:[['Mugs',18],['Totes',6],['Prints',44],['Caps',2],['Pins',30]],a:[['r','! Caps: 2 left · sells 3/day → reorder 60 today'],['y','⚠ Totes: 6 left · reorder 40 this week'],['g','✓ Prints well stocked (44)']]}}}]},
+{id:'abandoned-cart',c:'Shops',t:'g',i:'cart',n:'Abandoned cart recovery',d:'Shoppers who leave items in their cart get reminders, with an optional small discount, to come back and buy.',g:['Reminder after 1 hour','Follow-up after 24 hours with an offer','Shows the exact items they left','Recovered sales report'],
+ demo:['timeline',{fields:[{id:'name',label:'Shopper',val:'Hana'},{id:'item',label:'Item left in cart',val:'Silk scarf ($59)'}],run:'Leave the cart',steps:[{w:'+1 hour',ch:'Email',m:'Forgot something, {name}? Your {item} is still waiting → back to cart'},{w:'+24 hours',ch:'Email',m:'Still thinking it over? Here\'s 10% off your {item}: SAVE10'},{w:'+26 hours',ch:'Order',m:'{name} came back and bought it ✓'}],end:'Recovered sale: {item}'}]},
+
+/* HIRING & STAFF */
+{id:'cv-screening',c:'Hiring & staff',t:'p',i:'users',n:'CV screening & shortlist',d:'Applications are read and scored against your job requirements, giving you a ranked shortlist with reasons — you make the final call.',g:['Every CV scored against your must-haves','Ranked shortlist with short reasons','Polite replies to all applicants','Fair, consistent criteria every time'],
+ demo:['form',{fields:[{id:'role',label:'Role',val:'Front desk receptionist'},{id:'must',label:'Must-haves',val:'customer service, booking software, weekends'}],btn:'Screen 4 applicants',
+  render:function(v){var C=[['Amira K.',92,'3 yrs reception, booking software, available weekends'],['Ben T.',78,'Strong customer service, no booking software yet'],['Lucy R.',64,'Retail experience, weekdays only'],['Sam P.',41,'No customer-facing experience']];return '<table class="sheetx"><thead><tr><th>Applicant</th><th>Score</th><th>Why</th></tr></thead><tbody>'+C.map(function(c){return '<tr class="new"><td>'+c[0]+'</td><td><span class="score" style="color:'+(c[1]>80?'var(--ok)':c[1]>60?'var(--warn)':'#ff8a8a')+'">'+c[1]+'</span></td><td>'+c[2]+'</td></tr>'}).join('')+'</tbody></table><div class="alert g" style="margin-top:10px">✓ Shortlist for '+esc(v.role)+': Amira, Ben · interview invites drafted</div>'}}]},
+{id:'interview-sched',c:'Hiring & staff',t:'g',i:'cal',n:'Interview scheduling',d:'Shortlisted candidates pick their own interview slot from your free times. Calendar invites and reminders go out automatically.',g:['Candidates choose from your free slots','Calendar invite with video link','Reminders to both sides','Reschedules handled automatically'],
+ demo:['book',{what:'Candidate',opts:['Amira K. — Receptionist','Ben T. — Receptionist'],days:['Tue','Wed','Thu'],times:['10:00am','10:30am','11:00am','2:00pm','2:30pm','3:00pm'],btn:'Confirm interview',after:['✓ Interview booked: {s} · {d} {t}','✓ Calendar invite with video link sent to both','⏰ Reminders 1 day and 1 hour before']}]},
+{id:'onboarding',c:'Hiring & staff',t:'s',i:'list',n:'New staff welcome & checklist',d:'New hires get a welcome email, their first-week plan and a checklist. You see what\'s done and what\'s missing.',g:['Welcome email and first-week plan','Document and form checklist','Reminders for anything missing','Manager notified when complete'],
+ demo:['kan',{intro:'Tap a task to tick it off for the new hire, Zara.',cols:['To do','In progress','Done'],cards:[[0,'Sign contract','Sent Monday'],[0,'Bank details form','Payroll'],[1,'Watch safety video','12 min'],[0,'Meet the team','Friday 10am'],[2,'Welcome email','Sent ✓']],onMove:function(t,c){return c==='Done'?'"'+t+'" done — manager updated':'"'+t+'" started'}}]},
+{id:'rota',c:'Hiring & staff',t:'g',i:'clock',n:'Staff rota & shift reminders',d:'Weekly rota sent to every staff member, shift reminders the night before, and swap requests handled by message.',g:['Weekly rota sent to each person','Reminder the night before each shift','Shift swaps by reply, you approve','Hours summary for payroll'],
+ demo:['feed',{intro:'Sunday 7pm — rota goes out for next week:',btn:'Send this week\'s rota',cols:['Staff','Mon','Tue','Wed','Sent'],rows:[['Ayesha','9–5','9–5','off','✓ WhatsApp'],['Josh','off','12–8','12–8','✓ WhatsApp'],['Mei','12–8','off','9–5','✓ Text'],['Rafael','9–5','9–5','12–8','✓ Email']],end:'✓ Rota sent · Josh asked to swap Wed → approval request sent to you'}]},
+
+/* MONEY */
+{id:'overdue',c:'Money',t:'s',i:'money',n:'Overdue payment reminders',d:'Polite, escalating reminders for unpaid invoices — so you get paid faster without awkward chasing.',g:['Reminders before and after the due date','Polite tone that gets firmer over time','Pay-now link in every message','Stops automatically once paid'],
+ demo:['timeline',{fields:[{id:'cl',label:'Client',val:'Bloom Co'},{id:'amt',label:'Amount',val:'$240'}],run:'Run reminders',steps:[{w:'3 days before',ch:'Email',m:'Hi {cl}, friendly reminder: invoice for {amt} is due Friday. Pay here → link'},{w:'Due date',ch:'Email',m:'Hi {cl}, invoice {amt} is due today. Thanks so much!'},{w:'+7 days',ch:'Email',m:'Hi {cl}, invoice {amt} is now 7 days overdue. Could you take a look today?'},{w:'+8 days',ch:'Paid',m:'{cl} paid {amt} ✓ reminders stopped · sheet updated'}]}]},
+{id:'receipts',c:'Money',t:'g',i:'receipt',n:'Receipts & expenses → spreadsheet',d:'Forward or photograph receipts and they\'re read, sorted into categories and added to your expenses sheet — ready for your accountant.',g:['Snap a photo or forward an email','Date, supplier, amount and tax read for you','Sorted into expense categories','Monthly export for your accountant'],
+ demo:['feed',{btn:'Read 4 receipts',source:['📷 Photo: Shell petrol receipt','📧 Email: Adobe subscription','📷 Photo: Office Depot receipt','📧 Email: Meta ads invoice'],cols:['Date','Supplier','Category','Amount'],rows:[['Nov 18','Shell','Travel','$61.20'],['Nov 18','Adobe','Software','$54.99'],['Nov 19','Office Depot','Supplies','$23.45'],['Nov 20','Meta','Advertising','$150.00']],end:'✓ 4 receipts filed · November expenses: $289.64'}]},
+{id:'profit',c:'Money',t:'g',i:'chart',n:'Monthly profit summary',d:'A clear monthly report of money in, money out and profit, with your biggest costs and how you compare to last month.',g:['Income, expenses and profit','Biggest costs highlighted','Compared with last month','PDF emailed on the 1st'],
+ demo:['dash',{ranges:{'October':{m:[['Income','$18,400','+9%'],['Expenses','$11,250','+4%'],['Profit','$7,150','+18%'],['Margin','39%','+3%']],b:[['Jun',5],['Jul',6.1],['Aug',5.6],['Sep',6.05],['Oct',7.15]],a:[['y','⚠ Biggest cost: Rent $3,200 (28%)'],['g','✓ Profit up $1,100 on September'],['y','⚠ Ads spend up 22% — check results']]},'September':{m:[['Income','$16,880','+2%'],['Expenses','$10,830','-1%'],['Profit','$6,050','+8%'],['Margin','36%','+2%']],b:[['May',4.8],['Jun',5],['Jul',6.1],['Aug',5.6],['Sep',6.05]],a:[['g','✓ Lowest expenses in 4 months']]}}}]},
+{id:'subs-alerts',c:'Money',t:'s',i:'bell',n:'Subscription & renewal alerts',d:'Never get caught by a surprise renewal. See every subscription you pay for and get warned before each one renews.',g:['All subscriptions in one list','Alerts 7 days before renewal','Unused subscriptions flagged','Yearly cost total'],
+ demo:['dash',{ranges:{'Next 30 days':{m:[['Subscriptions','14',''],['Monthly cost','$612',''],['Renewing soon','3',''],['Possibly unused','2','']],b:[['Design',89],['Email',45],['Phone',120],['Web',30],['Ads tools',99]],a:[['y','⚠ Design suite renews in 5 days ($89/mo)'],['r','! Video tool not used in 60 days — cancel to save $348/yr'],['y','⚠ Domain renews Dec 3 ($18)']]}}}]},
+
+/* DOCUMENTS */
+{id:'contracts',c:'Documents',t:'g',i:'doc',n:'Contracts & proposals from a form',d:'Fill in a short form and get a professional proposal or contract with your branding, ready to send for e-signature.',g:['Your own templates, branded','Filled in from a short form','Sent for e-signature','Signed copies saved automatically'],
+ demo:['form',{fields:[{id:'cl',label:'Client',val:'Harbor Dental'},{id:'pr',label:'Project',val:'New website + booking system'},{id:'fee',label:'Fee',type:'number',val:4200,half:true},{id:'wk',label:'Timeline (weeks)',type:'number',val:4,half:true},{id:'dep',label:'Deposit',type:'select',opts:['30%','50%'],val:'50%'}],btn:'Create proposal',
+  render:function(v){var d=parseInt(v.dep)/100;return '<div class="doc"><p class="muted">PROPOSAL</p><h5>'+esc(v.pr)+'</h5><p class="muted">Prepared for '+esc(v.cl)+'</p><table><tr><td>Scope</td><td>'+esc(v.pr)+'</td></tr><tr><td>Timeline</td><td>'+v.wk+' weeks from deposit</td></tr><tr><td>Investment</td><td>'+money(v.fee)+'</td></tr><tr><td>Deposit ('+esc(v.dep)+')</td><td>'+money(Math.round(v.fee*d))+'</td></tr></table><p class="muted">Signature: ______________________</p><span class="paybtn">Sign &amp; accept</span></div><div class="alert g" style="margin-top:10px">✓ Sent to '+esc(v.cl)+' for e-signature · you\'ll be notified when signed</div>'}}]},
+{id:'forms-to-data',c:'Documents',t:'g',i:'table',n:'PDFs & scanned forms → spreadsheet',d:'Paper forms, PDFs and scans are read and turned into clean spreadsheet rows — no more typing data by hand.',g:['Works with scans, photos and PDFs','Fields read into the right columns','Unclear fields flagged for a quick check','Hours of typing saved each week'],
+ demo:['feed',{btn:'Read 3 scanned forms',source:['📄 registration_form_01.pdf','📄 scan_2026-11-19.jpg','📄 registration_form_02.pdf'],cols:['Name','Email','Phone','Plan'],rows:[['Yusuf Ali','yusuf@mail.com','555-0110','Family'],['Grace Lee','grace.l@mail.com','555-0123','Single'],['Ivan Petrov','<span style="color:var(--warn)">ivan@mai?.com ⚠</span>','555-0156','Single']],end:'✓ 3 forms added · 1 unclear email flagged for you to check'}]},
+{id:'meeting-notes',c:'Documents',t:'g',i:'list',n:'Meeting notes → tasks & follow-ups',d:'Paste or record meeting notes and get a tidy summary, a task list with owners and a follow-up email ready to send.',g:['Clean summary of decisions','Tasks with owners and dates','Follow-up email drafted','Tasks added to your tracker'],
+ demo:['form',{fields:[{id:'n',label:'Messy meeting notes',type:'area',val:'met with harbor dental. they want site live before jan 15. sara sends logo by fri. we send 2 designs next wed. budget ok at 4200. need photos of clinic - mike to book photographer'}],btn:'Tidy it up',
+  render:function(v){return '<div class="doc"><h5>Meeting summary</h5><p class="muted">Harbor Dental · today</p><p style="margin:8px 0"><b>Decisions:</b> Budget confirmed at $4,200 · Go-live before Jan 15</p><table><tr><th>Task</th><th>Owner</th><th>Due</th></tr><tr><td>Send logo</td><td>Sara</td><td>Fri</td></tr><tr><td>Send 2 designs</td><td>Us</td><td>Next Wed</td></tr><tr><td>Book photographer</td><td>Mike</td><td>This week</td></tr></table><p class="muted">Follow-up email drafted to Sara ✓</p></div>'}}]},
+{id:'translate',c:'Documents',t:'s',i:'globe',n:'Translation for messages & pages',d:'Your website, menus and customer messages translated into Arabic, Urdu, Spanish and more — so you can serve every customer in their language.',g:['Natural, business-friendly translations','Website pages, menus and price lists','Auto-translate incoming customer messages','Checked for right-to-left languages'],
+ demo:['form',{live:true,fields:[{id:'tx',label:'Message',type:'select',opts:['Your order is ready for pickup.','We are open every day from 9am to 9pm.','Thank you for your booking!'],val:'Your order is ready for pickup.'},{id:'lang',label:'Language',type:'select',opts:['Arabic','Urdu','Spanish','French'],val:'Arabic'}],btn:'Translate',
+  render:function(v){var T={'Your order is ready for pickup.':{Arabic:'طلبك جاهز للاستلام.',Urdu:'آپ کا آرڈر وصولی کے لیے تیار ہے۔',Spanish:'Tu pedido está listo para recoger.',French:'Votre commande est prête à être retirée.'},'We are open every day from 9am to 9pm.':{Arabic:'نحن مفتوحون كل يوم من ٩ صباحًا حتى ٩ مساءً.',Urdu:'ہم روزانہ صبح 9 بجے سے رات 9 بجے تک کھلے ہیں۔',Spanish:'Abrimos todos los días de 9 a. m. a 9 p. m.',French:'Nous sommes ouverts tous les jours de 9 h à 21 h.'},'Thank you for your booking!':{Arabic:'شكرًا لحجزك!',Urdu:'بکنگ کا شکریہ!',Spanish:'¡Gracias por tu reserva!',French:'Merci pour votre réservation !'}};var rtl=v.lang==='Arabic'||v.lang==='Urdu';return '<div class="doc" dir="'+(rtl?'rtl':'ltr')+'" style="font-size:18px">'+esc(T[v.tx][v.lang])+'</div>'}}]},
+
+/* INTERNAL TOOLS */
+{id:'crm',c:'Internal tools',t:'p',i:'users',n:'Simple customer database (CRM)',d:'All your customers and leads in one place, with their stage, last contact and next step — and reminders so nobody slips through.',g:['Every lead from every channel in one board','Stages from New to Won','Follow-up reminders','Customer history and notes'],
+ demo:['kan',{intro:'Tap a lead to move it forward. New leads arrive automatically.',cols:['New','Talking','Won'],cards:[[0,'Harbor Dental','Website · $4,200'],[1,'Peak Fitness','Automations · $750'],[0,'Bloom Salon','Chatbot · $750'],[2,'Northside Café','Menu + site · $1,800']],add:{btn:'New lead arrives',msg:'New lead added from your website form',items:[['Lakeview Clinic','Booking system · $1,500'],['Urban Eats','WhatsApp ordering · $1,500']]},onMove:function(t,c){return c==='Won'?t+' won 🎉 — invoice and welcome email sent':t+' moved to Talking — follow-up reminder set for 2 days'}}]},
+{id:'tracker',c:'Internal tools',t:'g',i:'check',n:'Job & project tracker',d:'Every job from enquiry to invoice, with who\'s on it and what\'s next. Customers can get automatic progress updates too.',g:['Board with your own stages','Assign jobs to staff','Customer updates at each stage','Invoice triggered when done'],
+ demo:['kan',{cols:['Booked','On site','Done'],cards:[[0,'Bathroom refit','Lee · Mon'],[1,'Kitchen tiling','Ravi · today'],[0,'Boiler service','Lee · Thu'],[2,'Fence repair','Ravi · invoiced']],onMove:function(t,c){return c==='Done'?t+' done — customer notified and invoice sent':t+' started — customer told "team on the way"'}}]},
+{id:'knowledge-bot',c:'Internal tools',t:'p',i:'brain',n:'Staff knowledge assistant',d:'An assistant your team can ask "how do we…?" — answered from your own documents, policies and price lists. Fewer interruptions for you.',g:['Answers from your own documents only','Works on phone, WhatsApp or web','Shows which document it used','You control what it can see'],
+ demo:['chat',{name:'Team helper',av:'TH',sub:'Answers from your company docs',greet:'Hi! Ask me anything about our policies, prices or procedures.',quick:['How do I process a refund?','What\'s the staff discount?','How do I close the till?'],rules:[{k:['refund'],a:'Refunds: within 14 days with receipt → refund to original card. Over $100 needs manager approval.\n📄 Source: Returns policy v3'},{k:['discount'],a:'Staff get 25% off, and 40% off one item per month. Not on sale items.\n📄 Source: Staff handbook p.12'},{k:['till','close'],a:'1) Print Z-report 2) Count float back to $150 3) Bag the rest with the report 4) Lock in safe.\n📄 Source: Closing checklist'},{k:['holiday','leave'],a:'Request leave at least 2 weeks ahead in the rota app. 28 days per year.\n📄 Source: Staff handbook p.6'}],fallback:'I couldn\'t find that in our documents — I\'ve sent your question to the manager.'}]}
+];
+
+/* ---------- RENDER GRID ---------- */
+var grid=$('grid'),chips=$('chips'),q=$('q'),cat='All';
+$('countA').textContent=A.length;
+CATS.forEach(function(c){var n=c==='All'?A.length:A.filter(function(a){return a.c===c}).length;if(!n)return;var b=h('button',{'class':'chip',type:'button','aria-pressed':c==='All'?'true':'false'},esc(c)+' · '+n);b.onclick=function(){cat=c;[].forEach.call(chips.children,function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');draw()};chips.appendChild(b)});
+function svg(i){return '<svg viewBox="0 0 24 24" aria-hidden="true">'+(ICONS[i]||ICONS.chat)+'</svg>'}
+function draw(){var s=q.value.trim().toLowerCase();grid.innerHTML='';var list=A.filter(function(a){return (cat==='All'||a.c===cat)&&(!s||(a.n+' '+a.d+' '+a.c+' '+a.g.join(' ')).toLowerCase().indexOf(s)>-1)});
+  list.forEach(function(a){var T=TIERS[a.t];var c=h('article',{'class':'card'});c.innerHTML='<div class="ctop"><div class="ico">'+svg(a.i)+'</div><span class="tier '+a.t+'">'+T.n+'</span></div><span class="tag" style="align-self:flex-start">'+esc(a.c)+'</span><h3>'+esc(a.n)+'</h3><p>'+esc(a.d)+'</p><ul>'+a.g.slice(0,3).map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul><div class="cfoot"><span class="price">from <b>'+T.set+'</b> · '+T.mo+'</span><button class="btn hot sm" type="button">Try preview</button></div>';c.querySelector('button').onclick=function(){open(a)};grid.appendChild(c)});
+  $('empty').hidden=list.length>0}
+q.addEventListener('input',draw);draw();
+
+/* ---------- MODAL ---------- */
+var ov=$('ov'),last=null;
+function open(a){clearTimers();last=document.activeElement;var T=TIERS[a.t];
+  $('mt').textContent=a.n;$('mcat').textContent=a.c;var mt=$('mtier');mt.className='tier '+a.t;mt.textContent=T.n;
+  $('mdesc').textContent=a.d;$('mget').innerHTML=a.g.map(function(x){return '<li>'+esc(x)+'</li>'}).join('');
+  $('mkv').innerHTML='<span>Setup</span><b>from '+T.set+'</b><span>Monthly care</span><b>'+T.mo+'</b><span>Ready in</span><b>'+T.days+'</b><span>Express</span><b>3–5 days · +$400</b>';
+  $('mbuy').href=mailto('Automation: '+a.n,'Hi Dario,\n\nI\'m interested in the "'+a.n+'" automation.\n\nMy business: \nWhat I\'d like it to do: \nBest way to reach me: \n\nThanks!');
+  var d=$('mdemo');d.innerHTML='';E[a.demo[0]](d,a.demo[1]);
+  ov.classList.add('on');document.body.classList.add('lock');$('sheet').scrollTop=0;$('mx').focus();
+  try{history.replaceState(null,'','#'+a.id)}catch(e){}}
+function close(){clearTimers();ov.classList.remove('on');document.body.classList.remove('lock');$('mdemo').innerHTML='';try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}if(last)last.focus()}
+$('mx').onclick=close;ov.addEventListener('click',function(e){if(e.target===ov)close()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('on'))close()});
+var bookLink=mailto('Free automation call','Hi Dario,\n\nI\'d like a free call about automating my business.\n\nMy business: \nWhat takes up most of my time: \nBest time to call: \n\nThanks!');
+['heroBook','footBook','emptyAsk'].forEach(function(id){$(id).href=bookLink});
+$('yr').textContent=new Date().getFullYear();
+var hsh=location.hash.slice(1);if(hsh){var f=A.filter(function(a){return a.id===hsh})[0];if(f)open(f)}
+})();
+</script>
+</body>
+</html>
