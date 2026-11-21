@@ -32,7 +32,7 @@ body.bp .nav{background:linear-gradient(#0c2747,transparent)}
 .brand i{width:8px;height:8px;border-radius:50%;background:var(--clay);box-shadow:0 0 12px var(--clay)}
 .brand span{color:var(--mute)}
 .tools{display:flex;gap:8px}
-.tools button{font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--bone);background:rgba(238,240,245,.04);border:1px solid var(--line);border-radius:99px;padding:9px 13px;cursor:pointer;transition:border-color .2s,background .2s}
+.tools button{font:inherit;letter-spacing:inherit;text-transform:inherit;color:#ffc2a6;background:rgba(255,90,78,.14);border:1px solid rgba(255,122,92,.6);border-radius:99px;padding:9px 13px;cursor:pointer;transition:border-color .2s,background .2s}
 .tools button:hover{border-color:var(--clay)}
 .tools button[aria-pressed=true]{background:var(--clay);color:#fff;border-color:var(--clay)}
 main{position:relative;z-index:2}
@@ -396,12 +396,14 @@ h1 em{font-size:1.12em}
 .sec .col{position:relative}
 .sec .col::before{content:"";position:absolute;inset:-70px -110px;background:radial-gradient(closest-side,rgba(11,6,6,.8),rgba(11,6,6,.45) 60%,transparent);z-index:-1;pointer-events:none}
 .studio .col::before,.apart .col::before{display:none}
-.navlink.ghost{background:transparent;color:var(--bone);border:1px solid var(--line)}
+.navlink.ghost{background:rgba(255,90,78,.14);color:#ffc2a6;border:1px solid rgba(255,122,92,.6)}
 @media (max-width:760px){.navlink.ghost{display:none}}
 
 .mode{display:inline-flex;padding:5px;border:1px solid var(--line);border-radius:99px;background:rgba(16,9,9,.8);margin-bottom:26px}
-.mode button{font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);background:transparent;border:0;border-radius:99px;padding:11px 18px;cursor:pointer;transition:all .3s}
+.mode button{font:500 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#ffc2a6;background:transparent;border:0;border-radius:99px;padding:11px 18px;cursor:pointer;transition:all .3s}
 .mode button[aria-pressed=true]{background:linear-gradient(90deg,#ffb27a,#ff3d3d,#b3123a);color:#0b0606}
+@media (max-width:600px){.mode{flex-wrap:wrap;border-radius:22px;justify-content:center}}
+.lines li.mo{color:var(--mute);font-size:.92em}
 .step em{font-style:normal}
 .upinfo{margin-top:14px;border:1px solid var(--line);border-radius:18px;padding:18px;background:rgba(16,9,9,.72)}
 .uphint{color:var(--bone);font-size:14px;margin-bottom:12px}
@@ -431,7 +433,7 @@ h1 em{font-size:1.12em}
 .qs details p{color:var(--mute);padding:0 0 18px;max-width:640px}
 .autocta{margin-left:8px}@media(max-width:520px){.autocta{margin-left:0;margin-top:12px}}
 .cbtns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.cbtns .cta{margin-top:30px}
-.cta.ghost{background:transparent;color:var(--bone);border:1px solid var(--line)}
+.cta.ghost{background:rgba(255,90,78,.14);color:#ffc2a6;border:1px solid rgba(255,122,92,.6)}
 .cform{margin-top:26px;display:grid;gap:12px;border:1px solid rgba(255,90,78,.2);border-radius:22px;padding:22px;background:rgba(16,9,9,.85);}
 .cform .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .cform label{display:flex;flex-direction:column;gap:6px;font:500 10px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
@@ -1047,7 +1049,7 @@ body.charging #hold{box-shadow:0 0 0 1px rgba(255,255,255,.08),0 10px 40px rgba(
 
     <div class="pgrid">
       <div class="pleft">
-        <div class="mode" id="mode" role="tablist"><button data-m="new" aria-pressed="true">New website</button><button data-m="up" aria-pressed="false">Upgrade my website</button></div>
+        <div class="mode" id="mode" role="tablist"><button data-m="new" aria-pressed="true">New website</button><button data-m="up" aria-pressed="false">Upgrade my website</button><button data-m="auto" aria-pressed="false">Automations</button></div>
         <h4 class="step"><span>01</span><em id="stepTitle">Choose your website</em></h4>
         <div class="opts" id="types"></div>
         <div class="upinfo" id="upinfo" hidden>
@@ -1063,7 +1065,7 @@ body.charging #hold{box-shadow:0 0 0 1px rgba(255,255,255,.08),0 10px 40px rgba(
         <div class="speeds" id="speeds"></div>
         <div class="tl" id="tl"><div class="tltrack"><div class="tlfill" id="tlfill"></div></div><div class="tlpts" id="tlpts"></div></div>
 
-        <h4 class="step"><span>03</span>Add extras</h4>
+        <h4 class="step" id="addsStep"><span>03</span>Add extras</h4>
         <div class="adds" id="adds"></div>
       </div>
 
@@ -1291,29 +1293,52 @@ if(window.SITE.web3formsKey&&!window.SITE.formEndpoint){ const EP='https://api.w
     {id:'uspeed',ic:'⚡',name:'Speed & mobile fix',desc:'Faster loading, better on phones, cleaner code.',price:400},
     {id:'umove',ic:'↗',name:'Move to fast hosting',desc:'Relaunch on premium fast hosting with your domain.',price:250},
   ];
+  const AUTOS=[
+    {id:'a-chat',ic:'💬',name:'Website lead chatbot',desc:'Answers questions and sends you every lead.',price:750,mo:120},
+    {id:'a-wa',ic:'✆',name:'WhatsApp auto-replies',desc:'Instant answers to prices, hours and bookings.',price:1500,mo:220,badge:'Pro'},
+    {id:'a-quote',ic:'∑',name:'Instant quote calculator',desc:'Exact prices on your site, with a payment link.',price:750,mo:120},
+    {id:'a-follow',ic:'↻',name:'Lead follow-up sequence',desc:'Instant reply + follow-ups until they book.',price:750,mo:120},
+    {id:'a-remind',ic:'⏰',name:'Booking reminders',desc:'Fewer no-shows with one-tap confirm.',price:350,mo:60},
+    {id:'a-review',ic:'★',name:'Review requests',desc:'Happy customers asked for a review automatically.',price:350,mo:60},
+    {id:'a-invoice',ic:'▤',name:'Automatic invoices',desc:'Invoices emailed with a pay-now link.',price:750,mo:120},
+    {id:'a-overdue',ic:'$',name:'Overdue payment reminders',desc:'Polite reminders until you get paid.',price:350,mo:60},
+    {id:'a-dash',ic:'▥',name:'Sales dashboard & reports',desc:'Your numbers in one place, emailed weekly.',price:750,mo:120},
+    {id:'a-content',ic:'✎',name:'Social content maker',desc:'30 posts a month written in your voice.',price:750,mo:120},
+    {id:'a-cart',ic:'🛒',name:'Abandoned cart recovery',desc:'Win back shoppers who left items behind.',price:750,mo:120},
+    {id:'a-crm',ic:'◎',name:'Customer database (CRM)',desc:'Every lead and customer, with reminders.',price:1500,mo:220,badge:'Pro'},
+  ];
+  const ASPEEDS=[
+    {id:'std',label:'5–7 days',days:7,add:0,note:'Standard',steps:[[1,'Kickoff'],[3,'Build'],[5,'Testing'],[7,'Live']]},
+    {id:'exp',label:'3–5 days',days:5,add:400,note:'Express +$400',steps:[[1,'Kickoff'],[2,'Build'],[4,'Testing'],[5,'Live']]},
+  ];
+  let autos=new Set(['a-chat']), aspeed='std';
   let mode='new', ups=new Set(['uanim']);
   let type='animated', speed='2w', adds=new Set();
 
   const tEl=$('types'), sEl=$('speeds'), aEl=$('adds');
   if(false) tEl.innerHTML=TYPES.map(t=>`<button class="opt" role="radio" data-id="${t.id}">${t.badge?`<span class="badge">${t.badge}</span>`:''}<div class="ic">${t.ic}</div><b>${t.name}</b><p>${t.desc}</p><div class="pr">${money(t.price)}<small>FROM</small></div></button>`).join('');
-  sEl.innerHTML=SPEEDS.map(s=>`<button class="spd" role="radio" data-id="${s.id}"><b>${s.label}</b><span>${s.days} days to launch</span><em>${s.note}</em></button>`).join('');
+  function drawSpeeds(){ const SL=mode==='auto'?ASPEEDS:SPEEDS; sEl.innerHTML=SL.map(s=>`<button class="spd" role="radio" data-id="${s.id}"><b>${s.label}</b><span>${mode==='auto'?'until it\'s live':s.days+' days to launch'}</span><em>${s.note}</em></button>`).join(''); }
+  drawSpeeds();
   aEl.innerHTML=ADDS.map(a=>`<button class="add" role="checkbox" data-id="${a.id}"><i class="chk"></i><div><b>${a.name}</b><span>${a.desc}</span></div><span class="ap">+${money(a.price)}</span></button>`).join('');
   function drawTypes(){
-    const L=mode==='new'?TYPES:UPGRADES;
-    tEl.innerHTML=L.map(t=>`<button class="opt" role="${mode==='new'?'radio':'checkbox'}" data-id="${t.id}">${t.badge?`<span class="badge">${t.badge}</span>`:''}<div class="ic">${t.ic}</div><b>${t.name}</b><p>${t.desc}</p><div class="pr">${mode==='new'?'':'+'}${money(t.price)}<small>${mode==='new'?'FROM':'UPGRADE'}</small></div></button>`).join('');
-    $('stepTitle').textContent=mode==='new'?'Choose your website':'Choose your upgrades';
-    $('upinfo').hidden=mode==='new';
+    const L=mode==='new'?TYPES:mode==='up'?UPGRADES:AUTOS;
+    tEl.innerHTML=L.map(t=>`<button class="opt" role="${mode==='new'?'radio':'checkbox'}" data-id="${t.id}">${t.badge?`<span class="badge">${t.badge}</span>`:''}<div class="ic">${t.ic}</div><b>${t.name}</b><p>${t.desc}</p><div class="pr">${mode==='up'?'+':''}${money(t.price)}<small>${mode==='new'?'FROM':mode==='up'?'UPGRADE':'SETUP · +'+money(t.mo)+'/MO'}</small></div></button>`).join('')+(mode==='auto'?`<a class="opt" href="/automations.html" style="text-decoration:none;display:flex;flex-direction:column;justify-content:center"><div class="ic">→</div><b>See all 49 automations</b><p>Try each one live, then come back to pay.</p></a>`:'');
+    $('stepTitle').textContent=mode==='new'?'Choose your website':mode==='up'?'Choose your upgrades':'Choose your automations';
+    $('upinfo').hidden=mode!=='up';
+    $('addsStep').hidden=aEl.hidden=mode==='auto';
+    drawSpeeds();
   }
   document.getElementById('mode').onclick=e=>{const b=e.target.closest('button'); if(!b) return; mode=b.dataset.m;
     document.querySelectorAll('#mode button').forEach(x=>x.setAttribute('aria-pressed',x===b)); if(mode==='up') adds.delete('hero3d'); drawTypes(); render(true); };
   tEl.onclick=e=>{const b=e.target.closest('.opt'); if(!b) return;
     if(mode==='new'){ type=b.dataset.id; if(type==='3d') adds.delete('hero3d'); }
+    else if(mode==='auto'){ const id=b.dataset.id; if(autos.has(id)){ if(autos.size>1) autos.delete(id); } else autos.add(id); }
     else { const id=b.dataset.id; if(ups.has(id)){ if(ups.size>1) ups.delete(id); } else ups.add(id); }
     render(); };
   ['upUrl','upPlat'].forEach(id=>document.getElementById(id).addEventListener('input',()=>render(false)));
   drawTypes();
   document.getElementById('curSel').onchange=e=>{ cur=e.target.value; document.getElementById('curNote').textContent=cur==='USD'?'Prices in US dollars':'Approximate — invoiced in USD'; lastTotal=0; drawTypes(); render(false); };
-  sEl.onclick=e=>{const b=e.target.closest('.spd'); if(b){speed=b.dataset.id; render(true);}};
+  sEl.onclick=e=>{const b=e.target.closest('.spd'); if(b){ if(mode==='auto') aspeed=b.dataset.id; else speed=b.dataset.id; render(true);}};
   aEl.onclick=e=>{const b=e.target.closest('.add'); if(b&&!b.disabled){const id=b.dataset.id; adds.has(id)?adds.delete(id):adds.add(id); render();}};
 
   let lastTotal=0;
@@ -1324,6 +1349,7 @@ if(window.SITE.web3formsKey&&!window.SITE.formEndpoint){ const EP='https://api.w
     pts.innerHTML=s.steps.map(([d,l],i)=>{const x=(d-1)/(s.days-1)*100; return `<div class="tlp" style="left:${x}%;animation-delay:${.15+i*.22}s"><i></i><small>Day ${d}</small><span>${l}</span></div>`}).join('');
   }
   function render(tlAnim){
+    if(mode==='auto') return renderAuto(tlAnim);
     const s=SPEEDS.find(x=>x.id===speed);
     const sel=mode==='new'?[TYPES.find(x=>x.id===type)]:UPGRADES.filter(u=>ups.has(u.id));
     const t={name:sel.map(x=>x.name).join(' + '),price:sel.reduce((n,x)=>n+x.price,0)};
@@ -1340,6 +1366,19 @@ if(window.SITE.web3formsKey&&!window.SITE.formEndpoint){ const EP='https://api.w
     window.mpState={days:s.days,steps:s.steps,lines:sel.map(x=>({name:x.name,price:x.price,desc:x.desc})).concat(rush?[{name:'Faster delivery · '+s.label,price:rush,desc:s.note+' — '+s.days+' days to launch'}]:[]).concat(extras.map(a=>({name:a.name,price:a.price,desc:a.desc}))),total,deposit:Math.round(total/2),cur,money,promo,disc,speed:s.label,items:sel.map(x=>[x.name,x.price]).concat(rush?[['Timeline · '+s.label,rush]]:[]).concat(extras.map(a=>[a.name,a.price])),summary:sel.map(x=>x.name).join(' + ')+' · '+s.label+(extras.length?' · +'+extras.map(a=>a.name).join(', '):'')};
     if(tlAnim!==false) timeline(s);
   }
+  function renderAuto(tlAnim){
+    const s=ASPEEDS.find(x=>x.id===aspeed), sel=AUTOS.filter(a=>autos.has(a.id));
+    tEl.querySelectorAll('.opt[data-id]').forEach(b=>b.setAttribute('aria-checked',autos.has(b.dataset.id)));
+    sEl.querySelectorAll('.spd').forEach(b=>b.setAttribute('aria-checked',b.dataset.id===aspeed));
+    const setup=sel.reduce((n,a)=>n+a.price,0), monthly=sel.reduce((n,a)=>n+a.mo,0);
+    const bundle=sel.length>=3?Math.round(setup*.15/10)*10:0;
+    let total=setup-bundle+s.add; const pc=promo?((window.SITE.promoCodes||{})[promo]||0):0; const disc=pc?Math.round(total*pc/100/10)*10:0; total-=disc;
+    $('lines').innerHTML=sel.map(x=>`<li><span>${x.name}</span>${money(x.price)}</li>`).join('')+(bundle?`<li class="disc"><span>Bundle (3+ automations −15%)</span>−${money(bundle)}</li>`:'')+`<li><span>Delivery · ${s.label}</span>${s.add?'+'+money(s.add):'Included'}</li>`+(disc?`<li class="disc"><span>Code ${promo} (−${pc}%)</span>−${money(disc)}</li>`:'')+`<li class="mo"><span>Then monthly care, from launch</span>${money(monthly)}/mo</li>`;
+    animateTo(conv(total)); document.querySelector('.total span').textContent=SYM[cur].trim(); document.querySelector('.total small').textContent=cur; $('dep').textContent=money(Math.round(total/2)); $('dep2').textContent=money(total-Math.round(total/2));
+    $('reqTxt').textContent=`Hi Meltpoint Studio! I'd like these automations:\n${sel.map(x=>'• '+x.name).join('\n')}\n• Delivery: ${s.label}${s.add?' (express)':''}\n${bundle?`Bundle discount: −${money(bundle)}\n`:''}${disc?`Promo ${promo}: −${money(disc)}\n`:''}Setup total: ${money(total)} ${cur}\nMonthly care: ${money(monthly)}/month from launch`;
+    window.mpState={days:s.days,steps:s.steps,lines:sel.map(x=>({name:x.name,price:x.price,desc:x.desc})).concat(s.add?[{name:'Express delivery · '+s.label,price:s.add,desc:'Live in 3–5 days'}]:[]),total,deposit:Math.round(total/2),cur,money,promo,disc:disc+bundle,speed:s.label,items:sel.map(x=>[x.name,x.price]).concat(s.add?[['Express delivery · '+s.label,s.add]]:[]),summary:sel.map(x=>x.name).join(' + ')+' · '+s.label,auto:1,monthly};
+    if(tlAnim!==false) timeline(s);
+  }
   $('promoBtn').onclick=()=>{ const c=$('promoIn').value.trim().toUpperCase(), codes=window.SITE.promoCodes||{}, m=$('promoMsg');
     if(codes[c]){ promo=c; m.className='promomsg'; m.textContent=`Code applied — ${codes[c]}% off ✓`; } else { promo=''; m.className='promomsg bad'; m.textContent=c?'That code isn\'t valid.':''; } lastTotal=0; render(false); };
   $('promoIn').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); $('promoBtn').click(); } });
@@ -1347,7 +1386,8 @@ if(window.SITE.web3formsKey&&!window.SITE.formEndpoint){ const EP='https://api.w
     if(S.paypalMe) url=`https://paypal.me/${S.paypalMe}/${st.deposit}USD`; else if(S.depositUrl) url=S.depositUrl;
     if(url){ const a=document.createElement('a'); a.href=url; a.target='_blank'; a.rel='noopener'; document.body.appendChild(a); a.click(); a.remove(); n.hidden=false; n.textContent=`Deposit: $${st.deposit.toLocaleString('en-US')} USD. Please include your name in the payment note.`; }
     else if(S.payVia==='wise'){ const u=new URLSearchParams({t:st.total,i:st.lines.map(x=>x.name).join('|'),tl:st.days+' days',c:(typeof cur!=='undefined'&&['USD','GBP','EUR'].includes(cur))?cur:'USD'});
-      u.set('m',mode); if(mode==='new') u.set('ty',type); else u.set('up',[...ups].join(',')); u.set('sp',speed); if(adds.size) u.set('ad',[...adds].join(',')); if(promo) u.set('pr',promo);
+      if(mode==='auto'){ u.set('i',st.lines.map(x=>x.name).concat(['Then '+money(st.monthly)+'/month care from launch']).join('|')); u.set('tl',st.speed); }
+      else { u.set('m',mode); if(mode==='new') u.set('ty',type); else u.set('up',[...ups].join(',')); u.set('sp',speed); if(adds.size) u.set('ad',[...adds].join(',')); if(promo) u.set('pr',promo); }
       location.href='pay.html?'+u.toString(); }
     else { n.hidden=false; n.textContent='Online deposits open soon. Request this package and you\'ll receive a secure payment link.'; } };
   $('pdfBtn').onclick=()=>{ const b=$('pdfBtn'); b.textContent='Preparing…';
@@ -1426,10 +1466,12 @@ if(window.SITE.web3formsKey&&!window.SITE.formEndpoint){ const EP='https://api.w
   // ---- Page routing (#pricing) ----
   function route(){ const on=location.hash==='#pricing'; const was=document.body.classList.contains('pp'); document.body.classList.toggle('pp',on);
     if(on!==was){ const el=!on&&location.hash.length>1&&document.getElementById(location.hash.slice(1)); if(el) setTimeout(()=>el.scrollIntoView(),30); else window.scrollTo(0,0); if(on) render(true); window.dispatchEvent(new Event('resize')); } }
-  window.mpQuote=o=>{ if(o.mode&&o.mode!==mode){ mode=o.mode; document.querySelectorAll('#mode button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.m===mode)); }
+  window.mpQuote=o=>{ if(o.autos){ autos=new Set(o.autos.filter(a=>AUTOS.some(x=>x.id===a))); if(!autos.size) autos.add('a-chat'); } if(o.aspeed) aspeed=o.aspeed; if(o.mode&&o.mode!==mode){ mode=o.mode; document.querySelectorAll('#mode button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.m===mode)); }
     if(o.type&&TYPES.some(x=>x.id===o.type)){ mode='new'; document.querySelectorAll('#mode button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.m==='new')); type=o.type; }
     if(o.speed) speed=o.speed; adds=new Set((o.adds||[]).filter(a=>ADDS.some(x=>x.id===a)&&!(a==='hero3d'&&type==='3d')));
     drawTypes(); if(location.hash!=='#pricing') location.hash='pricing'; else { render(true); window.scrollTo(0,0); } };
+  const autoHash=()=>{ if(location.hash==='#pricing-automations') window.mpQuote({mode:'auto'}); };
+  addEventListener('hashchange',autoHash); setTimeout(autoHash,0);
   addEventListener('hashchange',route); render(false); route();
   /*mpDeep*/ try{ const u=new URLSearchParams(location.search); if(u.get('q')) setTimeout(()=>window.mpQuote({type:u.get('q'),adds:(u.get('a')||'').split(',').filter(Boolean)}),60); }catch(_){}
 })();
